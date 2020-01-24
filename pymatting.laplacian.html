@@ -1,0 +1,428 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>pymatting.laplacian package &mdash; PyMatting 1.0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="pymatting.preconditioner package" href="pymatting.preconditioner.html" />
+    <link rel="prev" title="pymatting.foreground package" href="pymatting.foreground.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> PyMatting
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="start.html">Getting Started</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="pymatting.html">API Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="pymatting.alpha.html">pymatting.alpha package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pymatting.cutout.html">pymatting.cutout package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pymatting.foreground.html">pymatting.foreground package</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">pymatting.laplacian package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#module-pymatting.laplacian.cf_laplacian">pymatting.laplacian.cf_laplacian module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-pymatting.laplacian.knn_laplacian">pymatting.laplacian.knn_laplacian module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-pymatting.laplacian.laplacian">pymatting.laplacian.laplacian module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-pymatting.laplacian.lbdm_laplacian">pymatting.laplacian.lbdm_laplacian module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-pymatting.laplacian.lkm_laplacian">pymatting.laplacian.lkm_laplacian module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-pymatting.laplacian.rw_laplacian">pymatting.laplacian.rw_laplacian module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-pymatting.laplacian.uniform_laplacian">pymatting.laplacian.uniform_laplacian module</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pymatting.preconditioner.html">pymatting.preconditioner package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pymatting.solver.html">pymatting.solver package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pymatting.util.html">pymatting.util package</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="benchmark.html">Benchmarks and Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">PyMatting</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="pymatting.html">API Reference</a> &raquo;</li>
+        
+      <li>pymatting.laplacian package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/pymatting.laplacian.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="pymatting-laplacian-package">
+<h1>pymatting.laplacian package<a class="headerlink" href="#pymatting-laplacian-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-pymatting.laplacian.cf_laplacian">
+<span id="pymatting-laplacian-cf-laplacian-module"></span><h2>pymatting.laplacian.cf_laplacian module<a class="headerlink" href="#module-pymatting.laplacian.cf_laplacian" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="pymatting.laplacian.cf_laplacian.cf_laplacian">
+<code class="sig-prename descclassname">pymatting.laplacian.cf_laplacian.</code><code class="sig-name descname">cf_laplacian</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">epsilon=1e-07</em>, <em class="sig-param">radius=1</em><span class="sig-paren">)</span><a class="headerlink" href="#pymatting.laplacian.cf_laplacian.cf_laplacian" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function implements the alpha estimator for closed-form alpha matting as proposed by <a class="bibtex reference internal" href="references.html#levin2007closed" id="id1">[LLW07]</a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>image</strong> (<em>numpy.ndarray</em>) – Image with shape <span class="math notranslate nohighlight">\(h\times w \times 3\)</span></p></li>
+<li><p><strong>epsilon</strong> (<em>float</em>) – Regularization strength</p></li>
+<li><p><strong>radius</strong> (<em>int</em>) – Radius of local window size</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>L</strong> – Matting Laplacian</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>scipy.sparse.spmatrix</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-pymatting.laplacian.knn_laplacian">
+<span id="pymatting-laplacian-knn-laplacian-module"></span><h2>pymatting.laplacian.knn_laplacian module<a class="headerlink" href="#module-pymatting.laplacian.knn_laplacian" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="pymatting.laplacian.knn_laplacian.knn_laplacian">
+<code class="sig-prename descclassname">pymatting.laplacian.knn_laplacian.</code><code class="sig-name descname">knn_laplacian</code><span class="sig-paren">(</span><em class="sig-param">image, n_neighbors=[20, 10], distance_weights=[2.0, 0.1]</em><span class="sig-paren">)</span><a class="headerlink" href="#pymatting.laplacian.knn_laplacian.knn_laplacian" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function calculates the KNN matting Laplacian matrix as described in <a class="bibtex reference internal" href="references.html#chen2013knn" id="id2">[CLT13]</a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>image</strong> (<em>numpy.ndarray</em>) – Image</p></li>
+<li><p><strong>n_neighbors</strong> (<em>list of ints</em>) – Number of neighbors to consider</p></li>
+<li><p><strong>distance_weights</strong> (<em>list of floats</em>) – Weight of distance in feature vector</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>L</strong> – Matting Laplacian matrix</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>scipy.sparse.spmatrix</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-pymatting.laplacian.laplacian">
+<span id="pymatting-laplacian-laplacian-module"></span><h2>pymatting.laplacian.laplacian module<a class="headerlink" href="#module-pymatting.laplacian.laplacian" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="pymatting.laplacian.laplacian.make_linear_system">
+<code class="sig-prename descclassname">pymatting.laplacian.laplacian.</code><code class="sig-name descname">make_linear_system</code><span class="sig-paren">(</span><em class="sig-param">L</em>, <em class="sig-param">trimap</em>, <em class="sig-param">lambda_value=100.0</em>, <em class="sig-param">return_c=False</em><span class="sig-paren">)</span><a class="headerlink" href="#pymatting.laplacian.laplacian.make_linear_system" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function constructs a linear system from a matting Laplacian and a trimap as described in []</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>L</strong> (<em>scipy.sparse.spmatrix</em>) – Matting matrix</p></li>
+<li><p><strong>trimap</strong> (<em>numpy.ndarray</em>) – Trimap</p></li>
+<li><p><strong>lambda_value</strong> (<em>float</em>) – Constraint penalty, defaults to 100</p></li>
+<li><p><strong>return_c</strong> (<em>bool</em>) – Whether to return the constraint matrix C, defaults to false</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>A</strong> (<em>scipy.sparse.spmatrix</em>) – Matrix describing the system of linear equations</p></li>
+<li><p><strong>b</strong> (<em>numpy.ndarray</em>) – Vector describing the right-hand side of the system</p></li>
+<li><p><strong>C</strong> (<em>numpy.ndarray</em>) – Vector describing the diagonal entries of the matrix C, only returned if <cite>return_c</cite> is set to True</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-pymatting.laplacian.lbdm_laplacian">
+<span id="pymatting-laplacian-lbdm-laplacian-module"></span><h2>pymatting.laplacian.lbdm_laplacian module<a class="headerlink" href="#module-pymatting.laplacian.lbdm_laplacian" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="pymatting.laplacian.lbdm_laplacian.lbdm_laplacian">
+<code class="sig-prename descclassname">pymatting.laplacian.lbdm_laplacian.</code><code class="sig-name descname">lbdm_laplacian</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">epsilon=1e-07</em>, <em class="sig-param">radius=1</em><span class="sig-paren">)</span><a class="headerlink" href="#pymatting.laplacian.lbdm_laplacian.lbdm_laplacian" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate a Laplacian matrix based on <a class="bibtex reference internal" href="references.html#zheng2009learning" id="id3">[ZK09]</a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>image</strong> (<em>numpy.ndarray</em>) – Image with shape <span class="math notranslate nohighlight">\(h\times w \times 3\)</span></p></li>
+<li><p><strong>epsilon</strong> (<em>float</em>) – Regularization strength</p></li>
+<li><p><strong>radius</strong> (<em>int</em>) – Radius of local window size</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>L</strong> – Matting Laplacian</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>scipy.sparse.csr_matrix</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-pymatting.laplacian.lkm_laplacian">
+<span id="pymatting-laplacian-lkm-laplacian-module"></span><h2>pymatting.laplacian.lkm_laplacian module<a class="headerlink" href="#module-pymatting.laplacian.lkm_laplacian" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="pymatting.laplacian.lkm_laplacian.lkm_laplacian">
+<code class="sig-prename descclassname">pymatting.laplacian.lkm_laplacian.</code><code class="sig-name descname">lkm_laplacian</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">epsilon=1e-07</em>, <em class="sig-param">radius=10</em>, <em class="sig-param">return_diagonal=True</em><span class="sig-paren">)</span><a class="headerlink" href="#pymatting.laplacian.lkm_laplacian.lkm_laplacian" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the Laplacian for large kernel matting <a class="bibtex reference internal" href="references.html#he2010fast" id="id4">[HST10]</a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>image</strong> (<em>numpy.ndarray</em>) – Image of shape <span class="math notranslate nohighlight">\(h\times w \times 3\)</span></p></li>
+<li><p><strong>epsilons</strong> (<em>float</em>) – Regularization strength, defaults to <span class="math notranslate nohighlight">\(1e-7\)</span></p></li>
+<li><p><strong>radius</strong> (<em>int</em>) – Radius, defaults to 10</p></li>
+<li><p><strong>return_diagonal</strong> (<em>bool</em>) – Whether to also return the diagonal of the laplacian, defaults to True</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>L_matvec</strong> (<em>function</em>) – Function that applies the Laplacian matrix to a vector p</p></li>
+<li><p><strong>diag_L</strong> (<em>numpy.ndarray</em>) – Diagonal entries of the matting Laplacian, only returnes if <cite>return_diagonal</cite> is True</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-pymatting.laplacian.rw_laplacian">
+<span id="pymatting-laplacian-rw-laplacian-module"></span><h2>pymatting.laplacian.rw_laplacian module<a class="headerlink" href="#module-pymatting.laplacian.rw_laplacian" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="pymatting.laplacian.rw_laplacian.rw_laplacian">
+<code class="sig-prename descclassname">pymatting.laplacian.rw_laplacian.</code><code class="sig-name descname">rw_laplacian</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">sigma=0.033</em>, <em class="sig-param">radius=1</em>, <em class="sig-param">regularization=1e-08</em><span class="sig-paren">)</span><a class="headerlink" href="#pymatting.laplacian.rw_laplacian.rw_laplacian" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function implements the alpha estimator for random walk alpha matting as described in <a class="bibtex reference internal" href="references.html#grady2005random" id="id5">[GSAW05]</a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>image</strong> (<em>numpy.ndarray</em>) – Image with shape <span class="math notranslate nohighlight">\(h\times w \times 3\)</span></p></li>
+<li><p><strong>sigma</strong> (<em>float</em>) – Sigma used to calculate the weights (see Equation 4 in <a class="bibtex reference internal" href="references.html#grady2005random" id="id6">[GSAW05]</a>), defaults to 0.033</p></li>
+<li><p><strong>radius</strong> (<em>int</em>) – Local window size, defaults to 1</p></li>
+<li><p><strong>regularitaion</strong> (<em>float</em>) – Regularization strength, defaults to 1e-8</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>L</strong> – Matting Laplacian</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>scipy.sparse.spmatrix</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-pymatting.laplacian.uniform_laplacian">
+<span id="pymatting-laplacian-uniform-laplacian-module"></span><h2>pymatting.laplacian.uniform_laplacian module<a class="headerlink" href="#module-pymatting.laplacian.uniform_laplacian" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="pymatting.laplacian.uniform_laplacian.uniform_laplacian">
+<code class="sig-prename descclassname">pymatting.laplacian.uniform_laplacian.</code><code class="sig-name descname">uniform_laplacian</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">radius=1</em><span class="sig-paren">)</span><a class="headerlink" href="#pymatting.laplacian.uniform_laplacian.uniform_laplacian" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function returns a Laplacian matrix with all weights equal to one.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>image</strong> (<em>numpy.ndarray</em>) – Image with shape <span class="math notranslate nohighlight">\(h\times w \times 3\)</span></p></li>
+<li><p><strong>radius</strong> (<em>int</em>) – Local window size, defaults to 1</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>L</strong> – Matting Laplacian</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>scipy.sparse.spmatrix</p>
+</dd>
+</dl>
+</dd></dl>
+
+<span class="target" id="module-pymatting.laplacian"></span></div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="pymatting.preconditioner.html" class="btn btn-neutral float-right" title="pymatting.preconditioner package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="pymatting.foreground.html" class="btn btn-neutral float-left" title="pymatting.foreground package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Thomas Germer, Tobias Uelwer, Stefan Conrad, Stefan Harmeling
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

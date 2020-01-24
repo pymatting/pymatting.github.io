@@ -1,0 +1,42 @@
+pymatting.foreground package
+============================
+
+
+pymatting.foreground.estimate\_foreground\_cf module
+----------------------------------------------------
+
+.. automodule:: pymatting.foreground.estimate_foreground_cf
+   :members:
+   :no-undoc-members:
+   :show-inheritance:
+
+pymatting.foreground.estimate\_foreground\_ml module
+----------------------------------------------------
+
+.. automodule:: pymatting.foreground.estimate_foreground_ml
+   :members:
+   :no-undoc-members:
+   :show-inheritance:
+
+pymatting.foreground.estimate\_foreground\_ml\_cupy module
+----------------------------------------------------------
+
+.. automodule:: pymatting.foreground.estimate_foreground_ml_cupy
+   :members:
+   :no-undoc-members:
+   :show-inheritance:
+
+pymatting.foreground.estimate\_foreground\_ml\_pyopencl module
+--------------------------------------------------------------
+
+.. automodule:: pymatting.foreground.estimate_foreground_ml_pyopencl
+   :members:
+   :no-undoc-members:
+   :show-inheritance:
+
+
+
+.. automodule:: pymatting.foreground
+   :members:
+   :no-undoc-members:
+   :show-inheritance:

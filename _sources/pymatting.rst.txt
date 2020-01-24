@@ -1,0 +1,19 @@
+API Reference
+=================
+
+
+.. toctree::
+
+   pymatting.alpha
+   pymatting.cutout
+   pymatting.foreground
+   pymatting.laplacian
+   pymatting.preconditioner
+   pymatting.solver
+   pymatting.util
+
+
+.. automodule:: pymatting
+   :members:
+   :no-undoc-members:
+   :show-inheritance:

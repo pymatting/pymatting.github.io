@@ -1,0 +1,349 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>pymatting.foreground package &mdash; PyMatting 1.0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="pymatting.laplacian package" href="pymatting.laplacian.html" />
+    <link rel="prev" title="pymatting.cutout package" href="pymatting.cutout.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> PyMatting
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="start.html">Getting Started</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="pymatting.html">API Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="pymatting.alpha.html">pymatting.alpha package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pymatting.cutout.html">pymatting.cutout package</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">pymatting.foreground package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#module-pymatting.foreground.estimate_foreground_cf">pymatting.foreground.estimate_foreground_cf module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-pymatting.foreground.estimate_foreground_ml">pymatting.foreground.estimate_foreground_ml module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-pymatting.foreground.estimate_foreground_ml_cupy">pymatting.foreground.estimate_foreground_ml_cupy module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-pymatting.foreground.estimate_foreground_ml_pyopencl">pymatting.foreground.estimate_foreground_ml_pyopencl module</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pymatting.laplacian.html">pymatting.laplacian package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pymatting.preconditioner.html">pymatting.preconditioner package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pymatting.solver.html">pymatting.solver package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pymatting.util.html">pymatting.util package</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="benchmark.html">Benchmarks and Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">PyMatting</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="pymatting.html">API Reference</a> &raquo;</li>
+        
+      <li>pymatting.foreground package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/pymatting.foreground.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="pymatting-foreground-package">
+<h1>pymatting.foreground package<a class="headerlink" href="#pymatting-foreground-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-pymatting.foreground.estimate_foreground_cf">
+<span id="pymatting-foreground-estimate-foreground-cf-module"></span><h2>pymatting.foreground.estimate_foreground_cf module<a class="headerlink" href="#module-pymatting.foreground.estimate_foreground_cf" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="pymatting.foreground.estimate_foreground_cf.estimate_foreground_cf">
+<code class="sig-prename descclassname">pymatting.foreground.estimate_foreground_cf.</code><code class="sig-name descname">estimate_foreground_cf</code><span class="sig-paren">(</span><em class="sig-param">image, alpha, regularization=1e-05, rtol=1e-05, neighbors=[(-1, 0), (1, 0), (0, -1), (0, 1)], return_background=False, foreground_guess=None, background_guess=None, ichol_kwargs={}, cg_kwargs={}</em><span class="sig-paren">)</span><a class="headerlink" href="#pymatting.foreground.estimate_foreground_cf.estimate_foreground_cf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Estimates the foreground of an image given alpha matte and image</p>
+<p>This method is based on the publication <a class="bibtex reference internal" href="references.html#levin2007closed" id="id1">[LLW07]</a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>image</strong> (<em>numpy.ndarray</em>) – Input image.</p></li>
+<li><p><strong>alpha</strong> (<em>numpy.ndarray</em>) – Input alpha matte.</p></li>
+<li><p><strong>regularization</strong> (<em>float</em>) – Regularization strength <span class="math notranslate nohighlight">\(\epsilon\)</span>, defaults to 1e-5.</p></li>
+<li><p><strong>neighbors</strong> (<em>list of tuples of ints</em>) – List of relative positions that define the neighborhood of a pixel.</p></li>
+<li><p><strong>return_background</strong> (<em>bool</em>) – Whether to return the estimated background in addition to the foreground.</p></li>
+<li><p><strong>foreground_guess</strong> (<em>numpy.ndarray</em>) – An initial guess for the foreground image in order to accelerate convergence.
+Using input image by default.</p></li>
+<li><p><strong>background_guess</strong> (<em>numpy.ndarray</em>) – An initial guess for the background image.
+Using input image by default.</p></li>
+<li><p><strong>ichol_kwargs</strong> (<em>dictionary</em>) – Keyword arguments for the incomplete Cholesky preconditioner.</p></li>
+<li><p><strong>cg_kwargs</strong> (<em>dictionary</em>) – Keyword arguments for the conjugate gradient descent solver.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>F</strong> (<em>numpy.ndarray</em>) – Extracted foreground</p></li>
+<li><p><strong>B</strong> (<em>numpy.ndarray</em>) – Extracted background (not returned by default)</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><code class="xref py py-func docutils literal notranslate"><span class="pre">stack_images()</span></code></dt><dd><p>This function can be used to place the foreground on a new background.</p>
+</dd>
+</dl>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="module-pymatting.foreground.estimate_foreground_ml">
+<span id="pymatting-foreground-estimate-foreground-ml-module"></span><h2>pymatting.foreground.estimate_foreground_ml module<a class="headerlink" href="#module-pymatting.foreground.estimate_foreground_ml" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="pymatting.foreground.estimate_foreground_ml.estimate_foreground_ml">
+<code class="sig-prename descclassname">pymatting.foreground.estimate_foreground_ml.</code><code class="sig-name descname">estimate_foreground_ml</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">alpha</em>, <em class="sig-param">regularization=1e-05</em>, <em class="sig-param">n_small_iterations=10</em>, <em class="sig-param">n_big_iterations=2</em>, <em class="sig-param">small_size=32</em>, <em class="sig-param">return_background=False</em><span class="sig-paren">)</span><a class="headerlink" href="#pymatting.foreground.estimate_foreground_ml.estimate_foreground_ml" title="Permalink to this definition">¶</a></dt>
+<dd><p>Estimates the foreground of an image given its alpha matte.</p>
+<p>See (TODO submission pending) for reference.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>image</strong> (<em>numpy.ndarray</em>) – Input image.</p></li>
+<li><p><strong>alpha</strong> (<em>numpy.ndarray</em>) – Input alpha matte.</p></li>
+<li><p><strong>regularization</strong> (<em>float</em>) – Regularization strength <span class="math notranslate nohighlight">\(\epsilon\)</span>, defaults to 1e-5.
+Higher regularization results in smoother colors.</p></li>
+<li><p><strong>n_small_iterations</strong> (<em>int</em>) – Number of iterations performed on small scale, defaults to 10.</p></li>
+<li><p><strong>n_big_iterations</strong> (<em>int</em>) – Number of iterations performed on large scale, defaults to 2.</p></li>
+<li><p><strong>small_size</strong> (<em>int</em>) – Threshold that determines at which size <cite>n_small_iterations</cite> should be used.</p></li>
+<li><p><strong>return_background</strong> (<em>bool</em>) – Whether to return the estimated background in addition to the foreground</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>F</strong> (<em>numpy.ndarray</em>) – Extracted foreground</p></li>
+<li><p><strong>B</strong> (<em>numpy.ndarray</em>) – Extracted background</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><code class="xref py py-func docutils literal notranslate"><span class="pre">stack_images()</span></code></dt><dd><p>This function can be used to place the foreground on a new background.</p>
+</dd>
+</dl>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="module-pymatting.foreground.estimate_foreground_ml_cupy">
+<span id="pymatting-foreground-estimate-foreground-ml-cupy-module"></span><h2>pymatting.foreground.estimate_foreground_ml_cupy module<a class="headerlink" href="#module-pymatting.foreground.estimate_foreground_ml_cupy" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="pymatting.foreground.estimate_foreground_ml_cupy.estimate_foreground_ml_cupy">
+<code class="sig-prename descclassname">pymatting.foreground.estimate_foreground_ml_cupy.</code><code class="sig-name descname">estimate_foreground_ml_cupy</code><span class="sig-paren">(</span><em class="sig-param">input_image</em>, <em class="sig-param">input_alpha</em>, <em class="sig-param">regularization=1e-05</em>, <em class="sig-param">n_small_iterations=10</em>, <em class="sig-param">n_big_iterations=2</em>, <em class="sig-param">small_size=32</em>, <em class="sig-param">block_size=(32</em>, <em class="sig-param">32)</em>, <em class="sig-param">return_background=False</em><span class="sig-paren">)</span><a class="headerlink" href="#pymatting.foreground.estimate_foreground_ml_cupy.estimate_foreground_ml_cupy" title="Permalink to this definition">¶</a></dt>
+<dd><p>See the <code class="code docutils literal notranslate"><span class="pre">estimate_foreground</span></code> method for documentation.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-pymatting.foreground.estimate_foreground_ml_pyopencl">
+<span id="pymatting-foreground-estimate-foreground-ml-pyopencl-module"></span><h2>pymatting.foreground.estimate_foreground_ml_pyopencl module<a class="headerlink" href="#module-pymatting.foreground.estimate_foreground_ml_pyopencl" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="pymatting.foreground.estimate_foreground_ml_pyopencl.estimate_foreground_ml_pyopencl">
+<code class="sig-prename descclassname">pymatting.foreground.estimate_foreground_ml_pyopencl.</code><code class="sig-name descname">estimate_foreground_ml_pyopencl</code><span class="sig-paren">(</span><em class="sig-param">input_image</em>, <em class="sig-param">input_alpha</em>, <em class="sig-param">regularization=1e-05</em>, <em class="sig-param">n_small_iterations=10</em>, <em class="sig-param">n_big_iterations=2</em>, <em class="sig-param">small_size=32</em>, <em class="sig-param">return_background=False</em><span class="sig-paren">)</span><a class="headerlink" href="#pymatting.foreground.estimate_foreground_ml_pyopencl.estimate_foreground_ml_pyopencl" title="Permalink to this definition">¶</a></dt>
+<dd><p>See the <code class="code docutils literal notranslate"><span class="pre">estimate_foreground</span></code> method for documentation.</p>
+</dd></dl>
+
+<span class="target" id="module-pymatting.foreground"></span></div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="pymatting.laplacian.html" class="btn btn-neutral float-right" title="pymatting.laplacian package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="pymatting.cutout.html" class="btn btn-neutral float-left" title="pymatting.cutout package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Thomas Germer, Tobias Uelwer, Stefan Conrad, Stefan Harmeling
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

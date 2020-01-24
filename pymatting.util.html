@@ -1,0 +1,732 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>pymatting.util package &mdash; PyMatting 1.0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Examples" href="examples.html" />
+    <link rel="prev" title="pymatting.solver package" href="pymatting.solver.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> PyMatting
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="start.html">Getting Started</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="pymatting.html">API Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="pymatting.alpha.html">pymatting.alpha package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pymatting.cutout.html">pymatting.cutout package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pymatting.foreground.html">pymatting.foreground package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pymatting.laplacian.html">pymatting.laplacian package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pymatting.preconditioner.html">pymatting.preconditioner package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pymatting.solver.html">pymatting.solver package</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">pymatting.util package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#module-pymatting.util.boxfilter">pymatting.util.boxfilter module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-pymatting.util.kdtree">pymatting.util.kdtree module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-pymatting.util.timer">pymatting.util.timer module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-pymatting.util.util">pymatting.util.util module</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="benchmark.html">Benchmarks and Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">PyMatting</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="pymatting.html">API Reference</a> &raquo;</li>
+        
+      <li>pymatting.util package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/pymatting.util.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="pymatting-util-package">
+<h1>pymatting.util package<a class="headerlink" href="#pymatting-util-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-pymatting.util.boxfilter">
+<span id="pymatting-util-boxfilter-module"></span><h2>pymatting.util.boxfilter module<a class="headerlink" href="#module-pymatting.util.boxfilter" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="pymatting.util.boxfilter.boxfilter">
+<code class="sig-prename descclassname">pymatting.util.boxfilter.</code><code class="sig-name descname">boxfilter</code><span class="sig-paren">(</span><em class="sig-param">src</em>, <em class="sig-param">radius</em>, <em class="sig-param">mode</em><span class="sig-paren">)</span><a class="headerlink" href="#pymatting.util.boxfilter.boxfilter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the boxfilter (uniform blur) of an input image.</p>
+<p>Depending on the mode, the input image of size <span class="math notranslate nohighlight">\((h, w)\)</span> is either of shape</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\((h - 2 r, w - 2 r)\)</span> in case of <cite>‘valid’</cite> mode</p></li>
+<li><p><span class="math notranslate nohighlight">\((h, w)\)</span> in case of <cite>‘same’</cite> mode</p></li>
+<li><p><span class="math notranslate nohighlight">\((h + 2 r, w + 2 r)\)</span> in case of <cite>‘full’</cite> mode</p></li>
+</ul>
+<img alt="_images/padding.png" src="_images/padding.png" />
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>src</strong> (<em>numpy.ndarray</em>) – Input image</p></li>
+<li><p><strong>radius</strong> (<em>int</em>) – Radius of boxfilter</p></li>
+<li><p><strong>mode</strong> (<em>str</em>) – One of ‘valid’, ‘same’ or ‘full’</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>dst</strong></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-pymatting.util.kdtree">
+<span id="pymatting-util-kdtree-module"></span><h2>pymatting.util.kdtree module<a class="headerlink" href="#module-pymatting.util.kdtree" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="pymatting.util.kdtree.knn">
+<code class="sig-prename descclassname">pymatting.util.kdtree.</code><code class="sig-name descname">knn</code><span class="sig-paren">(</span><em class="sig-param">data_points</em>, <em class="sig-param">query_points</em>, <em class="sig-param">k</em><span class="sig-paren">)</span><a class="headerlink" href="#pymatting.util.kdtree.knn" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find k nearest neighbors</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data_points</strong> (<em>numpy.ndarray</em>) – Dataset</p></li>
+<li><p><strong>query_points</strong> (<em>numpy.ndarray</em>) – Data points for which the next neighbours should be calculated</p></li>
+<li><p><strong>k</strong> (<em>int</em>) – Number of neighbors</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>distances</strong> (<em>numpy.ndarray</em>) – Distances to the neighbors</p></li>
+<li><p><strong>indices</strong> (<em>numpy.ndarray</em>) – Indices of the k nearest neighbors in original data array</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-pymatting.util.timer">
+<span id="pymatting-util-timer-module"></span><h2>pymatting.util.timer module<a class="headerlink" href="#module-pymatting.util.timer" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="pymatting.util.timer.Timer">
+<em class="property">class </em><code class="sig-prename descclassname">pymatting.util.timer.</code><code class="sig-name descname">Timer</code><a class="headerlink" href="#pymatting.util.timer.Timer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Timer for benchmarking</p>
+<dl class="method">
+<dt id="pymatting.util.timer.Timer.stop">
+<code class="sig-name descname">stop</code><span class="sig-paren">(</span><em class="sig-param">message=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pymatting.util.timer.Timer.stop" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return and print time since last stop-call or initialization.
+Also print elapsed time if message is provided.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>message</strong> (<em>str</em>) – Message to print in front of passed seconds</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-pymatting.util.util">
+<span id="pymatting-util-util-module"></span><h2>pymatting.util.util module<a class="headerlink" href="#module-pymatting.util.util" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="pymatting.util.util.apply_to_channels">
+<code class="sig-prename descclassname">pymatting.util.util.</code><code class="sig-name descname">apply_to_channels</code><span class="sig-paren">(</span><em class="sig-param">single_channel_func</em><span class="sig-paren">)</span><a class="headerlink" href="#pymatting.util.util.apply_to_channels" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a new function which operates on each channel.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>single_channel_func</strong> (<em>function</em>) – Function that acts on a single color channel</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>channel_func</strong> – The same function that operates on all color channels</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>function</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="pymatting.util.util.blend">
+<code class="sig-prename descclassname">pymatting.util.util.</code><code class="sig-name descname">blend</code><span class="sig-paren">(</span><em class="sig-param">foreground</em>, <em class="sig-param">background</em>, <em class="sig-param">alpha</em><span class="sig-paren">)</span><a class="headerlink" href="#pymatting.util.util.blend" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function composes a new image for given foreground image, background image and alpha matte.</p>
+<p>This is done by applying the composition equation</p>
+<div class="math notranslate nohighlight">
+\[I = \alpha F + (1-\alpha)B.\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>foreground</strong> (<em>numpy.ndarray</em>) – Foreground image</p></li>
+<li><p><strong>background</strong> (<em>numpy.ndarray</em>) – Background image</p></li>
+<li><p><strong>alpha</strong> (<em>numpy.ndarray</em>) – Alpha matte</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>image</strong> – Composed image as numpy.ndarray</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="pymatting.util.util.div_round_up">
+<code class="sig-prename descclassname">pymatting.util.util.</code><code class="sig-name descname">div_round_up</code><span class="sig-paren">(</span><em class="sig-param">x</em>, <em class="sig-param">n</em><span class="sig-paren">)</span><a class="headerlink" href="#pymatting.util.util.div_round_up" title="Permalink to this definition">¶</a></dt>
+<dd><p>Divides a number x by another integer n</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>int</em>) – Numerator</p></li>
+<li><p><strong>n</strong> (<em>int</em>) – Denominator</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>result</strong> – Result</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="pymatting.util.util.grid_coordinates">
+<code class="sig-prename descclassname">pymatting.util.util.</code><code class="sig-name descname">grid_coordinates</code><span class="sig-paren">(</span><em class="sig-param">width</em>, <em class="sig-param">height</em>, <em class="sig-param">flatten=False</em><span class="sig-paren">)</span><a class="headerlink" href="#pymatting.util.util.grid_coordinates" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates image pixel coordinates for an image with a specified shape</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>width</strong> (<em>int</em>) – Width of the input image</p></li>
+<li><p><strong>height</strong> (<em>int</em>) – Height of the input image</p></li>
+<li><p><strong>flatten</strong> (<em>bool</em>) – Whether the array containing the coordinates should be flattened or not, defaults to False</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>x</strong> (<em>numpy.ndarray</em>) – x coordinates</p></li>
+<li><p><strong>y</strong> (<em>numpy.ndarray</em>) – y coordinates</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="pymatting.util.util.isiterable">
+<code class="sig-prename descclassname">pymatting.util.util.</code><code class="sig-name descname">isiterable</code><span class="sig-paren">(</span><em class="sig-param">obj</em><span class="sig-paren">)</span><a class="headerlink" href="#pymatting.util.util.isiterable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks if an object is iterable</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>obj</strong> (<em>object</em>) – Object to check</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>is_iterable</strong> – Boolean variable indicating wether the object is iterable</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="pymatting.util.util.load_image">
+<code class="sig-prename descclassname">pymatting.util.util.</code><code class="sig-name descname">load_image</code><span class="sig-paren">(</span><em class="sig-param">path</em>, <em class="sig-param">mode=None</em>, <em class="sig-param">size=None</em>, <em class="sig-param">resample='box'</em><span class="sig-paren">)</span><a class="headerlink" href="#pymatting.util.util.load_image" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function can be used to load an image from a file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path</strong> (<em>str</em>) – Path of image to load.</p></li>
+<li><p><strong>mode</strong> (<em>str</em>) – Can be “GRAY”, “RGB” or something else (see PIL.convert())</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>image</strong> – Loaded image</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="pymatting.util.util.make_grid">
+<code class="sig-prename descclassname">pymatting.util.util.</code><code class="sig-name descname">make_grid</code><span class="sig-paren">(</span><em class="sig-param">images</em>, <em class="sig-param">nx=None</em>, <em class="sig-param">ny=None</em>, <em class="sig-param">dtype=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pymatting.util.util.make_grid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plots a grid of images.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>images</strong> (<em>list of numpy.ndarray</em>) – List of images to plot</p></li>
+<li><p><strong>nx</strong> (<em>int</em>) – Number of rows</p></li>
+<li><p><strong>ny</strong> (<em>int</em>) – Number of columns</p></li>
+<li><p><strong>dtype</strong> (<em>type</em>) – Data type of output array</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>grid</strong> – Grid of images with datatype <cite>dtype</cite></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="pymatting.util.util.mat_vec_dot">
+<code class="sig-prename descclassname">pymatting.util.util.</code><code class="sig-name descname">mat_vec_dot</code><span class="sig-paren">(</span><em class="sig-param">A</em>, <em class="sig-param">b</em><span class="sig-paren">)</span><a class="headerlink" href="#pymatting.util.util.mat_vec_dot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the matrix vector product for two arrays.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>A</strong> (<em>numpy.ndarray</em>) – Matrix (if np.ndim(A) &gt; 2 the function calculates the product for the two last axes)</p></li>
+<li><p><strong>b</strong> (<em>numpy.ndarray</em>) – Vector (if np.ndim(b) &gt; 1 the function calculates the product for the two last axes)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>channel_func</strong> – The same function that operates on all color channels</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>function</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="pymatting.util.util.normalize">
+<code class="sig-prename descclassname">pymatting.util.util.</code><code class="sig-name descname">normalize</code><span class="sig-paren">(</span><em class="sig-param">values</em><span class="sig-paren">)</span><a class="headerlink" href="#pymatting.util.util.normalize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Normalizes an array such that all values are between 0 and 1</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>values</strong> (<em>numpy.ndarray</em>) – Array to normalize</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>result</strong> – Normalized array</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="pymatting.util.util.normalize_rows">
+<code class="sig-prename descclassname">pymatting.util.util.</code><code class="sig-name descname">normalize_rows</code><span class="sig-paren">(</span><em class="sig-param">A</em>, <em class="sig-param">threshold=0.0</em><span class="sig-paren">)</span><a class="headerlink" href="#pymatting.util.util.normalize_rows" title="Permalink to this definition">¶</a></dt>
+<dd><p>Normalize the rows of a matrix</p>
+<p>Rows with sum below threshold are left as-is.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>A</strong> (<em>scipy.sparse.spmatrix</em>) – Matrix to normalize</p></li>
+<li><p><strong>threshold</strong> (<em>float</em>) – Threshold to avoid division by zero</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>A</strong> – Matrix with normalized rows</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>scipy.sparse.spmatrix</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="pymatting.util.util.save_image">
+<code class="sig-prename descclassname">pymatting.util.util.</code><code class="sig-name descname">save_image</code><span class="sig-paren">(</span><em class="sig-param">path</em>, <em class="sig-param">image</em>, <em class="sig-param">make_directory=True</em><span class="sig-paren">)</span><a class="headerlink" href="#pymatting.util.util.save_image" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given a path, save an image there.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path</strong> (<em>str</em>) – Where to save the image.</p></li>
+<li><p><strong>image</strong> (<em>numpy.ndarray</em><em>, </em><em>dtype in</em><em> [</em><em>np.uint8</em><em>, </em><em>np.float32</em><em>, </em><em>np.float64</em><em>]</em>) – Image to save.
+Images of float dtypes should be in range [0, 1].
+Images of uint8 dtype should be in range [0, 255]</p></li>
+<li><p><strong>make_directory</strong> (<em>bool</em>) – Whether to create the directories needed for the image path.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="pymatting.util.util.show_images">
+<code class="sig-prename descclassname">pymatting.util.util.</code><code class="sig-name descname">show_images</code><span class="sig-paren">(</span><em class="sig-param">images</em><span class="sig-paren">)</span><a class="headerlink" href="#pymatting.util.util.show_images" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plot grid of images.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>images</strong> (<em>list of numpy.ndarray</em>) – List of images to plot</p></li>
+<li><p><strong>height</strong> (<em>int</em><em>, </em><em>matrix</em>) – Height in pixels the output grid, defaults to 512</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="pymatting.util.util.sparse_conv_matrix">
+<code class="sig-prename descclassname">pymatting.util.util.</code><code class="sig-name descname">sparse_conv_matrix</code><span class="sig-paren">(</span><em class="sig-param">width</em>, <em class="sig-param">height</em>, <em class="sig-param">kernel</em><span class="sig-paren">)</span><a class="headerlink" href="#pymatting.util.util.sparse_conv_matrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates a convolution matrix that can be applied to a vectorized image</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>width</strong> (<em>int</em>) – Width of the input image</p></li>
+<li><p><strong>height</strong> (<em>int</em>) – Height of the input image</p></li>
+<li><p><strong>kernel</strong> (<em>numpy.ndarray</em>) – Convolutional kernel</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>M</strong> – Convolution matrix</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>scipy.sparse.csr_matrix</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="pymatting.util.util.sparse_conv_matrix_with_offsets">
+<code class="sig-prename descclassname">pymatting.util.util.</code><code class="sig-name descname">sparse_conv_matrix_with_offsets</code><span class="sig-paren">(</span><em class="sig-param">width</em>, <em class="sig-param">height</em>, <em class="sig-param">kernel</em>, <em class="sig-param">dx</em>, <em class="sig-param">dy</em><span class="sig-paren">)</span><a class="headerlink" href="#pymatting.util.util.sparse_conv_matrix_with_offsets" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates a convolution matrix that can be applied to a vectorized image</p>
+<p>Additionaly, this function allows to specify which pixels should be used for the convoltion, i.e.</p>
+<div class="math notranslate nohighlight">
+\[\left(I * K\right)_{ij} = \sum_k K_k I_{i+{\Delta_y}_k,j+{\Delta_y}_k},\]</div>
+<p>where <span class="math notranslate nohighlight">\(K\)</span> is the flattened convolution kernel.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>width</strong> (<em>int</em>) – Width of the input image</p></li>
+<li><p><strong>height</strong> (<em>int</em>) – Height of the input image</p></li>
+<li><p><strong>kernel</strong> (<em>numpy.ndarray</em>) – Convolutional kernel</p></li>
+<li><p><strong>dx</strong> (<em>numpy.ndarray</em>) – Offset in x direction</p></li>
+<li><p><strong>dy</strong> (<em>nunpy.ndarray</em>) – Offset in y direction</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>M</strong> – Convolution matrix</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>scipy.sparse.csr_matrix</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="pymatting.util.util.stack_images">
+<code class="sig-prename descclassname">pymatting.util.util.</code><code class="sig-name descname">stack_images</code><span class="sig-paren">(</span><em class="sig-param">*images</em><span class="sig-paren">)</span><a class="headerlink" href="#pymatting.util.util.stack_images" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function stacks images along the third axis.
+This is useful for combining e.g. rgb color channels or color and alpha channels.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>*images</strong> (<em>numpy.ndarray</em>) – Images to be stacked.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>image</strong> – Stacked images as numpy.ndarray</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="pymatting.util.util.to_rgb8">
+<code class="sig-prename descclassname">pymatting.util.util.</code><code class="sig-name descname">to_rgb8</code><span class="sig-paren">(</span><em class="sig-param">image</em><span class="sig-paren">)</span><a class="headerlink" href="#pymatting.util.util.to_rgb8" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convertes an image to rgb8 color space</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>image</strong> (<em>numpy.ndarray</em>) – Image to convert</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>image</strong> – Converted image with same height and width as input image but with three color channels</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="pymatting.util.util.trimap_split">
+<code class="sig-prename descclassname">pymatting.util.util.</code><code class="sig-name descname">trimap_split</code><span class="sig-paren">(</span><em class="sig-param">trimap</em>, <em class="sig-param">flatten=True</em><span class="sig-paren">)</span><a class="headerlink" href="#pymatting.util.util.trimap_split" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function splits the trimap into foreground pixels, background pixels and classifies each pixel as known or unknown.</p>
+<p>Foreground pixels are pixels where the trimap has value 1.0. Background pixels are pixels where the trimap has value 0.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>trimap</strong> (<em>numpy.ndarray</em>) – Trimap with shape <span class="math notranslate nohighlight">\(h\times w\times 1\)</span></p></li>
+<li><p><strong>flatten</strong> (<em>bool</em>) – If true np.flatten is called on the trimap</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>is_fg</strong> (<em>numpy.ndarray</em>) – Boolean array indicating which pixel belongs to the foreground</p></li>
+<li><p><strong>is_bg</strong> (<em>numpy.ndarray</em>) – Boolean array indicating which pixel belongs to the background</p></li>
+<li><p><strong>is_known</strong> (<em>numpy.ndarray</em>) – Boolean array indicating which pixel is known</p></li>
+<li><p><strong>is_unknown</strong> (<em>numpy.ndarray</em>) – Boolean array indicating which pixel is unknown</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="pymatting.util.util.vec_vec_dot">
+<code class="sig-prename descclassname">pymatting.util.util.</code><code class="sig-name descname">vec_vec_dot</code><span class="sig-paren">(</span><em class="sig-param">a</em>, <em class="sig-param">b</em><span class="sig-paren">)</span><a class="headerlink" href="#pymatting.util.util.vec_vec_dot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the dot product of two vectors.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>a</strong> (<em>numpy.ndarray</em>) – First vector (if np.ndim(a) &gt; 1 the function calculates the product for the two last axes)</p></li>
+<li><p><strong>b</strong> (<em>numpy.ndarray</em>) – Second vector (if np.ndim(b) &gt; 1 the function calculates the product for the two last axes)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>product</strong> – Dot product of <cite>a</cite> and <cite>b</cite></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>scalar</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="pymatting.util.util.vec_vec_outer">
+<code class="sig-prename descclassname">pymatting.util.util.</code><code class="sig-name descname">vec_vec_outer</code><span class="sig-paren">(</span><em class="sig-param">a</em>, <em class="sig-param">b</em><span class="sig-paren">)</span><a class="headerlink" href="#pymatting.util.util.vec_vec_outer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the outer product of two vectors</p>
+<dl class="simple">
+<dt>a: numpy.ndarray</dt><dd><p>First vector (if np.ndim(b) &gt; 1 the function calculates the product for the two last axes)</p>
+</dd>
+<dt>b: numpy.ndarray</dt><dd><p>Second vector (if np.ndim(b) &gt; 1 the function calculates the product for the two last axes)</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><strong>product</strong> – Outer product of <cite>a</cite> and <cite>b</cite> as numpy.ndarray</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="pymatting.util.util.weights_to_laplacian">
+<code class="sig-prename descclassname">pymatting.util.util.</code><code class="sig-name descname">weights_to_laplacian</code><span class="sig-paren">(</span><em class="sig-param">W</em>, <em class="sig-param">normalize=True</em>, <em class="sig-param">regularization=0.0</em><span class="sig-paren">)</span><a class="headerlink" href="#pymatting.util.util.weights_to_laplacian" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the random walk normlized Laplacian matrix from the weight matrix</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>W</strong> (<em>numpy.ndarray</em>) – Array of weights</p></li>
+<li><p><strong>normalize</strong> (<em>bool</em>) – Whether the rows of W should be normalized to 1, defaults to True</p></li>
+<li><p><strong>regularization</strong> (<em>float</em>) – Regularization strength, defaults to 0, i.e. no regularizaion</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>L</strong> – Laplacian matrix</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>scipy.sparse.spmatrix</p>
+</dd>
+</dl>
+</dd></dl>
+
+<span class="target" id="module-pymatting.util"></span></div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="examples.html" class="btn btn-neutral float-right" title="Examples" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="pymatting.solver.html" class="btn btn-neutral float-left" title="pymatting.solver package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Thomas Germer, Tobias Uelwer, Stefan Conrad, Stefan Harmeling
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

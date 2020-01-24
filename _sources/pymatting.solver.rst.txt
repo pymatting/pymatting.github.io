@@ -1,0 +1,26 @@
+pymatting.solver package
+========================
+
+
+pymatting.solver.callback module
+--------------------------------
+
+.. automodule:: pymatting.solver.callback
+   :members:
+   :no-undoc-members:
+   :show-inheritance:
+
+pymatting.solver.cg module
+--------------------------
+
+.. automodule:: pymatting.solver.cg
+   :members:
+   :no-undoc-members:
+   :show-inheritance:
+
+
+
+.. automodule:: pymatting.solver
+   :members:
+   :no-undoc-members:
+   :show-inheritance:
