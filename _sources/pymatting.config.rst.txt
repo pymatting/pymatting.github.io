@@ -1,0 +1,22 @@
+pymatting.config package
+========================
+
+Submodules
+----------
+
+pymatting.config.config module
+------------------------------
+
+.. automodule:: pymatting.config.config
+   :members:
+   :no-undoc-members:
+   :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: pymatting.config
+   :members:
+   :no-undoc-members:
+   :show-inheritance:

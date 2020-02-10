@@ -5,6 +5,7 @@ API Reference
 .. toctree::
 
    pymatting.alpha
+   pymatting.config
    pymatting.cutout
    pymatting.foreground
    pymatting.laplacian
