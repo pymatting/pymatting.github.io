@@ -1,8 +1,6 @@
 pymatting.config package
 ========================
 
-Submodules
-----------
 
 pymatting.config.config module
 ------------------------------
@@ -13,8 +11,6 @@ pymatting.config.config module
    :show-inheritance:
 
 
-Module contents
----------------
 
 .. automodule:: pymatting.config
    :members:
