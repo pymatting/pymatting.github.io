@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pymatting.solver package &mdash; PyMatting 1.0.0 documentation</title>
+  <title>pymatting.solver package &mdash; PyMatting 1.0.6 documentation</title>
   
 
   
@@ -227,7 +227,12 @@ Also prints residual error.</p>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>A</strong> (<em>scipy.sparse.csr_matrix</em>) – Square matrix</p></li>
 <li><p><strong>b</strong> (<em>numpy.ndarray</em>) – Vector describing the right-hand side of the system</p></li>
-<li><p><strong>M</strong> (<em>function</em>) – Preconditioning matrix</p></li>
+<li><p><strong>x0</strong> (<em>numpy.ndarray</em>) – Initialization, if <cite>None</cite> then <code class="code docutils literal notranslate"><span class="pre">x=np.zeros_like(b)</span></code></p></li>
+<li><p><strong>atol</strong> (<em>float</em>) – Absolute tolerance. The loop terminates if the <span class="math notranslate nohighlight">\(||r||\)</span> is smaller than <cite>atol</cite>, where <span class="math notranslate nohighlight">\(r\)</span> denotes the residual of the current iterate.</p></li>
+<li><p><strong>rtol</strong> (<em>float</em>) – Relative tolerance. The loop terminates if <span class="math notranslate nohighlight">\({||r||}/{||b||}\)</span> is smaller than <cite>rtol</cite>, where <span class="math notranslate nohighlight">\(r\)</span> denotes the residual of the current iterate.</p></li>
+<li><p><strong>callback</strong> (<em>function</em>) – Function <code class="code docutils literal notranslate"><span class="pre">callback(A,</span> <span class="pre">x,</span> <span class="pre">b,</span> <span class="pre">norm_b,</span> <span class="pre">r,</span> <span class="pre">norm_r)</span></code> called after each iteration, defaults to <cite>None</cite></p></li>
+<li><p><strong>M</strong> (<em>function</em><em> or </em><em>scipy.sparse.csr_matrix</em>) – Function that applies the preconditioner to a vector. Alternatively, <cite>M</cite> can be a matrix describing the precondioner.</p></li>
+<li><p><strong>reorthogonalize</strong> (<em>boolean</em>) – Wether to apply reorthogonalization of the residuals after each update, defaults to <cite>False</cite></p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>

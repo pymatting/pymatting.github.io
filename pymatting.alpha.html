@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pymatting.alpha package &mdash; PyMatting 1.0.0 documentation</title>
+  <title>pymatting.alpha package &mdash; PyMatting 1.0.6 documentation</title>
   
 
   
@@ -210,11 +210,11 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>image</strong> (<em>numpy.ndarray</em>) – Image with shape <span class="math notranslate nohighlight">\(h \times  w \times d\)</span> for which the foreground should be estimated</p></li>
+<li><p><strong>image</strong> (<em>numpy.ndarray</em>) – Image with shape <span class="math notranslate nohighlight">\(h \times  w \times d\)</span> for which the alpha matte should be estimated</p></li>
 <li><p><strong>trimap</strong> (<em>numpy.ndarray</em>) – Trimap with shape <span class="math notranslate nohighlight">\(h \times  w \times 1\)</span> of the image</p></li>
 <li><p><strong>preconditioner</strong> (<em>function</em><em> or </em><em>scipy.sparse.linalg.LinearOperator</em>) – Function or sparse matrix that applies the preconditioner to a vector (default: ichol)</p></li>
 <li><p><strong>laplacian_kwargs</strong> (<em>dictionary</em>) – Arguments passed to the <code class="code docutils literal notranslate"><span class="pre">cf_laplacian</span></code> function</p></li>
-<li><p><strong>cg_kwargs</strong> (<em>dictionary</em>) – Arguments passed to the <code class="code docutils literal notranslate"><span class="pre">cg</span></code></p></li>
+<li><p><strong>cg_kwargs</strong> (<em>dictionary</em>) – Arguments passed to the <code class="code docutils literal notranslate"><span class="pre">cg</span></code> solver</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -236,11 +236,11 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>image</strong> (<em>numpy.ndarray</em>) – Image with shape <span class="math notranslate nohighlight">\(h \times  w \times d\)</span> for which the foreground should be estimated</p></li>
+<li><p><strong>image</strong> (<em>numpy.ndarray</em>) – Image with shape <span class="math notranslate nohighlight">\(h \times  w \times d\)</span> for which the alpha matte should be estimated</p></li>
 <li><p><strong>trimap</strong> (<em>numpy.ndarray</em>) – Trimap with shape <span class="math notranslate nohighlight">\(h \times  w \times 1\)</span> of the image</p></li>
 <li><p><strong>preconditioner</strong> (<em>function</em><em> or </em><em>scipy.sparse.linalg.LinearOperator</em>) – Function or sparse matrix that applies the preconditioner to a vector (default: jacobi)</p></li>
 <li><p><strong>laplacian_kwargs</strong> (<em>dictionary</em>) – Arguments passed to the <code class="code docutils literal notranslate"><span class="pre">knn_laplacian</span></code> function</p></li>
-<li><p><strong>cg_kwargs</strong> (<em>dictionary</em>) – Arguments passed to the <code class="code docutils literal notranslate"><span class="pre">cg</span></code></p></li>
+<li><p><strong>cg_kwargs</strong> (<em>dictionary</em>) – Arguments passed to the <code class="code docutils literal notranslate"><span class="pre">cg</span></code> solver</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -262,11 +262,11 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>image</strong> (<em>numpy.ndarray</em>) – Image with shape <span class="math notranslate nohighlight">\(h \times  w \times d\)</span> for which the foreground should be estimated</p></li>
+<li><p><strong>image</strong> (<em>numpy.ndarray</em>) – Image with shape <span class="math notranslate nohighlight">\(h \times  w \times d\)</span> for which the alpha matte should be estimated</p></li>
 <li><p><strong>trimap</strong> (<em>numpy.ndarray</em>) – Trimap with shape <span class="math notranslate nohighlight">\(h \times  w \times 1\)</span> of the image</p></li>
 <li><p><strong>preconditioner</strong> (<em>function</em><em> or </em><em>scipy.sparse.linalg.LinearOperator</em>) – Function or sparse matrix that applies the preconditioner to a vector (default: ichol)</p></li>
 <li><p><strong>laplacian_kwargs</strong> (<em>dictionary</em>) – Arguments passed to the <code class="code docutils literal notranslate"><span class="pre">lbdm_laplacian</span></code> function</p></li>
-<li><p><strong>cg_kwargs</strong> (<em>dictionary</em>) – Arguments passed to the <code class="code docutils literal notranslate"><span class="pre">cg</span></code></p></li>
+<li><p><strong>cg_kwargs</strong> (<em>dictionary</em>) – Arguments passed to the <code class="code docutils literal notranslate"><span class="pre">cg</span></code> solver</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -288,10 +288,10 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>image</strong> (<em>numpy.ndarray</em>) – Image with shape <span class="math notranslate nohighlight">\(h \times  w \times d\)</span> for which the foreground should be estimated</p></li>
+<li><p><strong>image</strong> (<em>numpy.ndarray</em>) – Image with shape <span class="math notranslate nohighlight">\(h \times  w \times d\)</span> for which the alpha matte should be estimated</p></li>
 <li><p><strong>trimap</strong> (<em>numpy.ndarray</em>) – Trimap with shape <span class="math notranslate nohighlight">\(h \times  w \times 1\)</span> of the image</p></li>
 <li><p><strong>laplacian_kwargs</strong> (<em>dictionary</em>) – Arguments passed to the <code class="code docutils literal notranslate"><span class="pre">lkm_laplacian</span></code> function</p></li>
-<li><p><strong>cg_kwargs</strong> (<em>dictionary</em>) – Arguments passed to the <code class="code docutils literal notranslate"><span class="pre">cg</span></code></p></li>
+<li><p><strong>cg_kwargs</strong> (<em>dictionary</em>) – Arguments passed to the <code class="code docutils literal notranslate"><span class="pre">cg</span></code> solver</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -313,11 +313,11 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>image</strong> (<em>numpy.ndarray</em>) – Image with shape <span class="math notranslate nohighlight">\(h \times  w \times d\)</span> for which the foreground should be estimated</p></li>
+<li><p><strong>image</strong> (<em>numpy.ndarray</em>) – Image with shape <span class="math notranslate nohighlight">\(h \times  w \times d\)</span> for which the alpha matte should be estimated</p></li>
 <li><p><strong>trimap</strong> (<em>numpy.ndarray</em>) – Trimap with shape <span class="math notranslate nohighlight">\(h \times  w \times 1\)</span> of the image</p></li>
 <li><p><strong>preconditioner</strong> (<em>function</em><em> or </em><em>scipy.sparse.linalg.LinearOperator</em>) – Function or sparse matrix that applies the preconditioner to a vector (default: jacobi)</p></li>
 <li><p><strong>laplacian_kwargs</strong> (<em>dictionary</em>) – Arguments passed to the <code class="code docutils literal notranslate"><span class="pre">rw_laplacian</span></code> function</p></li>
-<li><p><strong>cg_kwargs</strong> (<em>dictionary</em>) – Arguments passed to the <code class="code docutils literal notranslate"><span class="pre">cg</span></code></p></li>
+<li><p><strong>cg_kwargs</strong> (<em>dictionary</em>) – Arguments passed to the <code class="code docutils literal notranslate"><span class="pre">cg</span></code> solver</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>

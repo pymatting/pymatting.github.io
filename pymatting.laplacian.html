@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pymatting.laplacian package &mdash; PyMatting 1.0.0 documentation</title>
+  <title>pymatting.laplacian package &mdash; PyMatting 1.0.6 documentation</title>
   
 
   
@@ -213,8 +213,10 @@
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>image</strong> (<em>numpy.ndarray</em>) – Image with shape <span class="math notranslate nohighlight">\(h\times w \times 3\)</span></p></li>
-<li><p><strong>epsilon</strong> (<em>float</em>) – Regularization strength</p></li>
-<li><p><strong>radius</strong> (<em>int</em>) – Radius of local window size</p></li>
+<li><p><strong>epsilon</strong> (<em>float</em>) – Regularization strength, defaults to <span class="math notranslate nohighlight">\(10^{-7}\)</span>. Strong regularization improves convergence but results in smoother alpha mattes.</p></li>
+<li><p><strong>radius</strong> (<em>int</em>) – Radius of local window size, defaults to <span class="math notranslate nohighlight">\(1\)</span>, i.e. only adjacent pixels are considered.
+The size of the local window is given as <span class="math notranslate nohighlight">\((2 r + 1)^2\)</span>, where <span class="math notranslate nohighlight">\(r\)</span> denotes         the radius. A larger radius might lead to violated color line constraints, but also
+favors further propagation of information within the image.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -236,9 +238,9 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>image</strong> (<em>numpy.ndarray</em>) – Image</p></li>
-<li><p><strong>n_neighbors</strong> (<em>list of ints</em>) – Number of neighbors to consider</p></li>
-<li><p><strong>distance_weights</strong> (<em>list of floats</em>) – Weight of distance in feature vector</p></li>
+<li><p><strong>image</strong> (<em>numpy.ndarray</em>) – Image with shape <span class="math notranslate nohighlight">\(h\times w \times 3\)</span></p></li>
+<li><p><strong>n_neighbors</strong> (<em>list of ints</em>) – Number of neighbors to consider. If <code class="code docutils literal notranslate"><span class="pre">len(n_neighbors)&gt;1</span></code> multiple nearest neighbor calculations are done and merged, defaults to <cite>[20, 10]</cite>, i.e. first 20 neighbors are considered and in the second run <span class="math notranslate nohighlight">\(10\)</span> neighbors. The pixel distances are then weighted by the <code class="code docutils literal notranslate"><span class="pre">distance_weights</span></code>.</p></li>
+<li><p><strong>distance_weights</strong> (<em>list of floats</em>) – Weight of distance in feature vector, defaults to <cite>[2.0, 1.0]</cite>.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -256,21 +258,25 @@
 <dl class="function">
 <dt id="pymatting.laplacian.laplacian.make_linear_system">
 <code class="sig-prename descclassname">pymatting.laplacian.laplacian.</code><code class="sig-name descname">make_linear_system</code><span class="sig-paren">(</span><em class="sig-param">L</em>, <em class="sig-param">trimap</em>, <em class="sig-param">lambda_value=100.0</em>, <em class="sig-param">return_c=False</em><span class="sig-paren">)</span><a class="headerlink" href="#pymatting.laplacian.laplacian.make_linear_system" title="Permalink to this definition">¶</a></dt>
-<dd><p>This function constructs a linear system from a matting Laplacian and a trimap as described in []</p>
+<dd><p>This function constructs a linear system from a matting Laplacian by constraining the foreground and background pixels with a diagonal matrix <cite>C</cite> to values in the right-hand-side vector <cite>b</cite>. The constraints are weighted by a factor <span class="math notranslate nohighlight">\(\lambda\)</span>. The linear system is given as</p>
+<div class="math notranslate nohighlight">
+\[A = L + \lambda C,\]</div>
+<p>where <span class="math notranslate nohighlight">\(C=\mathop{Diag}(c)\)</span> having <span class="math notranslate nohighlight">\(c_i = 1\)</span> if pixel i is known and <span class="math notranslate nohighlight">\(c_i = 0\)</span> otherwise.
+The right-hand-side <span class="math notranslate nohighlight">\(b\)</span> is a vector with entries <span class="math notranslate nohighlight">\(b_i = 1\)</span> is pixel is is a foreground pixel and <span class="math notranslate nohighlight">\(b_i = 0\)</span> otherwise.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>L</strong> (<em>scipy.sparse.spmatrix</em>) – Matting matrix</p></li>
-<li><p><strong>trimap</strong> (<em>numpy.ndarray</em>) – Trimap</p></li>
+<li><p><strong>L</strong> (<em>scipy.sparse.spmatrix</em>) – Laplacian matrix, e.g. calculated with <code class="code docutils literal notranslate"><span class="pre">lbdm_laplacian</span></code> function</p></li>
+<li><p><strong>trimap</strong> (<em>numpy.ndarray</em>) – Trimap with shape <span class="math notranslate nohighlight">\(h\times w \times 1\)</span></p></li>
 <li><p><strong>lambda_value</strong> (<em>float</em>) – Constraint penalty, defaults to 100</p></li>
-<li><p><strong>return_c</strong> (<em>bool</em>) – Whether to return the constraint matrix C, defaults to false</p></li>
+<li><p><strong>return_c</strong> (<em>bool</em>) – Whether to return the constraint matrix <cite>C</cite>, defaults to False</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p><ul class="simple">
 <li><p><strong>A</strong> (<em>scipy.sparse.spmatrix</em>) – Matrix describing the system of linear equations</p></li>
 <li><p><strong>b</strong> (<em>numpy.ndarray</em>) – Vector describing the right-hand side of the system</p></li>
-<li><p><strong>C</strong> (<em>numpy.ndarray</em>) – Vector describing the diagonal entries of the matrix C, only returned if <cite>return_c</cite> is set to True</p></li>
+<li><p><strong>C</strong> (<em>numpy.ndarray</em>) – Vector describing the diagonal entries of the matrix <cite>C</cite>, only returned if <cite>return_c</cite> is set to True</p></li>
 </ul>
 </p>
 </dd>
@@ -288,8 +294,8 @@
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>image</strong> (<em>numpy.ndarray</em>) – Image with shape <span class="math notranslate nohighlight">\(h\times w \times 3\)</span></p></li>
-<li><p><strong>epsilon</strong> (<em>float</em>) – Regularization strength</p></li>
-<li><p><strong>radius</strong> (<em>int</em>) – Radius of local window size</p></li>
+<li><p><strong>epsilon</strong> (<em>float</em>) – Regularization strength, defaults to <span class="math notranslate nohighlight">\(10^{-7}\)</span>. Strong regularization improves convergence but results in smoother alpha mattes.</p></li>
+<li><p><strong>radius</strong> (<em>int</em>) – Radius of local window size, defaults to <span class="math notranslate nohighlight">\(1\)</span>, i.e. only adjacent pixels are considered. The size of the local window is given as <span class="math notranslate nohighlight">\((2 r + 1)^2\)</span>, where <span class="math notranslate nohighlight">\(r\)</span> denotes the radius. A larger radius might lead to violated color line constraints, but also favors further propagation of information within the image.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -312,14 +318,14 @@
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>image</strong> (<em>numpy.ndarray</em>) – Image of shape <span class="math notranslate nohighlight">\(h\times w \times 3\)</span></p></li>
-<li><p><strong>epsilons</strong> (<em>float</em>) – Regularization strength, defaults to <span class="math notranslate nohighlight">\(1e-7\)</span></p></li>
-<li><p><strong>radius</strong> (<em>int</em>) – Radius, defaults to 10</p></li>
+<li><p><strong>epsilons</strong> (<em>float</em>) – Regularization strength, defaults to <span class="math notranslate nohighlight">\(10^{-7}\)</span></p></li>
+<li><p><strong>radius</strong> (<em>int</em>) – Radius of local window size, defaults to <span class="math notranslate nohighlight">\(10\)</span>, i.e. only adjacent pixels are considered. The size of the local window is given as <span class="math notranslate nohighlight">\((2 r + 1)^2\)</span>, where <span class="math notranslate nohighlight">\(r\)</span> denotes the radius. A larger radius might lead to violated color line constraints, but also favors further propagation of information within the image.</p></li>
 <li><p><strong>return_diagonal</strong> (<em>bool</em>) – Whether to also return the diagonal of the laplacian, defaults to True</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p><ul class="simple">
-<li><p><strong>L_matvec</strong> (<em>function</em>) – Function that applies the Laplacian matrix to a vector p</p></li>
+<li><p><strong>L_matvec</strong> (<em>function</em>) – Function that applies the Laplacian matrix to a vector</p></li>
 <li><p><strong>diag_L</strong> (<em>numpy.ndarray</em>) – Diagonal entries of the matting Laplacian, only returnes if <cite>return_diagonal</cite> is True</p></li>
 </ul>
 </p>
@@ -338,9 +344,9 @@
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>image</strong> (<em>numpy.ndarray</em>) – Image with shape <span class="math notranslate nohighlight">\(h\times w \times 3\)</span></p></li>
-<li><p><strong>sigma</strong> (<em>float</em>) – Sigma used to calculate the weights (see Equation 4 in <a class="bibtex reference internal" href="references.html#grady2005random" id="id6">[GSAW05]</a>), defaults to 0.033</p></li>
-<li><p><strong>radius</strong> (<em>int</em>) – Local window size, defaults to 1</p></li>
-<li><p><strong>regularitaion</strong> (<em>float</em>) – Regularization strength, defaults to 1e-8</p></li>
+<li><p><strong>sigma</strong> (<em>float</em>) – Sigma used to calculate the weights (see Equation 4 in <a class="bibtex reference internal" href="references.html#grady2005random" id="id6">[GSAW05]</a>), defaults to <span class="math notranslate nohighlight">\(0.033\)</span></p></li>
+<li><p><strong>radius</strong> (<em>int</em>) – Radius of local window size, defaults to <span class="math notranslate nohighlight">\(1\)</span>, i.e. only adjacent pixels are considered. The size of the local window is given as <span class="math notranslate nohighlight">\((2 r + 1)^2\)</span>, where <span class="math notranslate nohighlight">\(r\)</span> denotes the radius. A larger radius might lead to violated color line constraints, but also favors further propagation of information within the image.</p></li>
+<li><p><strong>regularization</strong> (<em>float</em>) – Regularization strength, defaults to <span class="math notranslate nohighlight">\(10^{-8}\)</span>. Strong regularization improves convergence but results in smoother alpha mattes.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -363,7 +369,9 @@
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>image</strong> (<em>numpy.ndarray</em>) – Image with shape <span class="math notranslate nohighlight">\(h\times w \times 3\)</span></p></li>
-<li><p><strong>radius</strong> (<em>int</em>) – Local window size, defaults to 1</p></li>
+<li><p><strong>radius</strong> (<em>int</em>) – Radius of local window size, defaults to 1, i.e. only adjacent pixels are considered.
+The size of the local window is given as <span class="math notranslate nohighlight">\((2 r + 1)^2\)</span>, where <span class="math notranslate nohighlight">\(r\)</span> denotes         the radius. A larger radius might lead to violated color line constraints, but also
+favors further propagation of information within the image.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
