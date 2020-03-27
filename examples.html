@@ -187,22 +187,29 @@
 </style>
 <div class="section" id="examples">
 <h1>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h1>
+<p>We provide different examples at different levels of abstraction.</p>
 <div class="section" id="simple-example">
-<h2>Simple Example<a class="headerlink" href="#simple-example" title="Permalink to this headline">¶</a></h2>
+<span id="example-simple"></span><h2>Simple Example<a class="headerlink" href="#simple-example" title="Permalink to this headline">¶</a></h2>
+<p>This simple example is intended for application-oriented users.
+All parameters were set beforehand and should work well on most images.
+The <code class="code docutils literal notranslate"><span class="pre">cutout()</span></code> method employs closed-form alpha matting <a class="bibtex reference internal" href="references.html#levin2007closed" id="id1">[LLW07]</a> and multi-level foreground extraction <a class="bibtex reference internal" href="references.html#germer2020multilevel" id="id2">[GUCH20]</a>.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pymatting</span> <span class="kn">import</span> <span class="n">cutout</span>
 
 <span class="n">cutout</span><span class="p">(</span>
-       <span class="c1"># input image path</span>
-       <span class="s2">&quot;../data/lemur.png&quot;</span><span class="p">,</span>
-       <span class="c1"># input trimap path</span>
-       <span class="s2">&quot;../data/lemur_trimap.png&quot;</span><span class="p">,</span>
-       <span class="c1"># output cutout path</span>
-       <span class="s2">&quot;lemur_cutout.png&quot;</span><span class="p">)</span>
+   <span class="c1"># input image path</span>
+   <span class="s2">&quot;../data/lemur.png&quot;</span><span class="p">,</span>
+   <span class="c1"># input trimap path</span>
+   <span class="s2">&quot;../data/lemur_trimap.png&quot;</span><span class="p">,</span>
+   <span class="c1"># output cutout path</span>
+   <span class="s2">&quot;lemur_cutout.png&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="advanced-example">
 <h2>Advanced Example<a class="headerlink" href="#advanced-example" title="Permalink to this headline">¶</a></h2>
+<p>The following example demonstrates the use of the <code class="code docutils literal notranslate"><span class="pre">estimate_alpha_cf()</span></code> method as well as the <code class="code docutils literal notranslate"><span class="pre">estimate_foreground_ml()</span></code> method.
+Both methods can be easily replaced by other methods from the <code class="code docutils literal notranslate"><span class="pre">pymatting.alpha</span></code> and from the <code class="code docutils literal notranslate"><span class="pre">pymatting.foreground</span></code> module, respectively.
+Parameters can be tweaked by passing them to the corresponding function calls.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pymatting</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 
@@ -242,6 +249,9 @@
 </div>
 <div class="section" id="expert-example">
 <h2>Expert Example<a class="headerlink" href="#expert-example" title="Permalink to this headline">¶</a></h2>
+<p>The third example provides an insight how PyMatting is working under-the-hood. The matting Laplacian matrix <code class="code docutils literal notranslate"><span class="pre">L</span></code> and the system of linear equations <code class="code docutils literal notranslate"><span class="pre">A</span> <span class="pre">x</span> <span class="pre">=</span> <span class="pre">b</span></code> are constructed manually. The solution vector <code class="code docutils literal notranslate"><span class="pre">x</span></code> is the flattened alpha matte.
+The alpha matte <code class="code docutils literal notranslate"><span class="pre">alpha</span></code> is then calculated by solving the linear system using the <code class="code docutils literal notranslate"><span class="pre">cg()</span></code> method. The convergence of the <code class="code docutils literal notranslate"><span class="pre">cg()</span></code> method is accelerated with a preconditioner using the <code class="code docutils literal notranslate"><span class="pre">ichol()</span></code> method.
+This example is intended for developers and (future) contributors to demonstrate the implementation of the different alpha matting methods.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pymatting</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">scipy.sparse</span>

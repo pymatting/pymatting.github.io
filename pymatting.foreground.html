@@ -205,22 +205,22 @@
 <dl class="function">
 <dt id="pymatting.foreground.estimate_foreground_cf.estimate_foreground_cf">
 <code class="sig-prename descclassname">pymatting.foreground.estimate_foreground_cf.</code><code class="sig-name descname">estimate_foreground_cf</code><span class="sig-paren">(</span><em class="sig-param">image, alpha, regularization=1e-05, rtol=1e-05, neighbors=[(-1, 0), (1, 0), (0, -1), (0, 1)], return_background=False, foreground_guess=None, background_guess=None, ichol_kwargs={}, cg_kwargs={}</em><span class="sig-paren">)</span><a class="headerlink" href="#pymatting.foreground.estimate_foreground_cf.estimate_foreground_cf" title="Permalink to this definition">¶</a></dt>
-<dd><p>Estimates the foreground of an image given alpha matte and image</p>
+<dd><p>Estimates the foreground of an image given alpha matte and image.</p>
 <p>This method is based on the publication <a class="bibtex reference internal" href="references.html#levin2007closed" id="id1">[LLW07]</a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>image</strong> (<em>numpy.ndarray</em>) – Input image.</p></li>
-<li><p><strong>alpha</strong> (<em>numpy.ndarray</em>) – Input alpha matte.</p></li>
-<li><p><strong>regularization</strong> (<em>float</em>) – Regularization strength <span class="math notranslate nohighlight">\(\epsilon\)</span>, defaults to 1e-5.</p></li>
-<li><p><strong>neighbors</strong> (<em>list of tuples of ints</em>) – List of relative positions that define the neighborhood of a pixel.</p></li>
-<li><p><strong>return_background</strong> (<em>bool</em>) – Whether to return the estimated background in addition to the foreground.</p></li>
+<li><p><strong>image</strong> (<em>numpy.ndarray</em>) – Input image with shape <span class="math notranslate nohighlight">\(h \times  w \times d\)</span></p></li>
+<li><p><strong>alpha</strong> (<em>numpy.ndarray</em>) – Input alpha matte with shape <span class="math notranslate nohighlight">\(h \times  w \times 1\)</span></p></li>
+<li><p><strong>regularization</strong> (<em>float</em>) – Regularization strength <span class="math notranslate nohighlight">\(\epsilon\)</span>, defaults to <span class="math notranslate nohighlight">\(10^{-5}\)</span></p></li>
+<li><p><strong>neighbors</strong> (<em>list of tuples of ints</em>) – List of relative positions that define the neighborhood of a pixel</p></li>
+<li><p><strong>return_background</strong> (<em>bool</em>) – Whether to return the estimated background in addition to the foreground</p></li>
 <li><p><strong>foreground_guess</strong> (<em>numpy.ndarray</em>) – An initial guess for the foreground image in order to accelerate convergence.
 Using input image by default.</p></li>
 <li><p><strong>background_guess</strong> (<em>numpy.ndarray</em>) – An initial guess for the background image.
 Using input image by default.</p></li>
-<li><p><strong>ichol_kwargs</strong> (<em>dictionary</em>) – Keyword arguments for the incomplete Cholesky preconditioner.</p></li>
-<li><p><strong>cg_kwargs</strong> (<em>dictionary</em>) – Keyword arguments for the conjugate gradient descent solver.</p></li>
+<li><p><strong>ichol_kwargs</strong> (<em>dictionary</em>) – Keyword arguments for the incomplete Cholesky preconditioner</p></li>
+<li><p><strong>cg_kwargs</strong> (<em>dictionary</em>) – Keyword arguments for the conjugate gradient descent solver</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -231,6 +231,14 @@ Using input image by default.</p></li>
 </p>
 </dd>
 </dl>
+<p class="rubric">Example</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pymatting</span> <span class="k">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">image</span> <span class="o">=</span> <span class="n">load_image</span><span class="p">(</span><span class="s2">&quot;data/lemur/lemur.png&quot;</span><span class="p">,</span> <span class="s2">&quot;RGB&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">alpha</span> <span class="o">=</span> <span class="n">load_image</span><span class="p">(</span><span class="s2">&quot;data/lemur/lemur_alpha.png&quot;</span><span class="p">,</span> <span class="s2">&quot;GRAY&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">F</span> <span class="o">=</span> <span class="n">estimate_foreground_cf</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">return_background</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">F</span><span class="p">,</span> <span class="n">B</span> <span class="o">=</span> <span class="n">estimate_foreground_cf</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">return_background</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <dl class="simple">
@@ -247,17 +255,17 @@ Using input image by default.</p></li>
 <dt id="pymatting.foreground.estimate_foreground_ml.estimate_foreground_ml">
 <code class="sig-prename descclassname">pymatting.foreground.estimate_foreground_ml.</code><code class="sig-name descname">estimate_foreground_ml</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">alpha</em>, <em class="sig-param">regularization=1e-05</em>, <em class="sig-param">n_small_iterations=10</em>, <em class="sig-param">n_big_iterations=2</em>, <em class="sig-param">small_size=32</em>, <em class="sig-param">return_background=False</em><span class="sig-paren">)</span><a class="headerlink" href="#pymatting.foreground.estimate_foreground_ml.estimate_foreground_ml" title="Permalink to this definition">¶</a></dt>
 <dd><p>Estimates the foreground of an image given its alpha matte.</p>
-<p>See (TODO submission pending) for reference.</p>
+<p>See <a class="bibtex reference internal" href="references.html#germer2020multilevel" id="id2">[GUCH20]</a> for reference.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>image</strong> (<em>numpy.ndarray</em>) – Input image.</p></li>
-<li><p><strong>alpha</strong> (<em>numpy.ndarray</em>) – Input alpha matte.</p></li>
-<li><p><strong>regularization</strong> (<em>float</em>) – Regularization strength <span class="math notranslate nohighlight">\(\epsilon\)</span>, defaults to 1e-5.
+<li><p><strong>image</strong> (<em>numpy.ndarray</em>) – Input image with shape <span class="math notranslate nohighlight">\(h \times  w \times d\)</span></p></li>
+<li><p><strong>alpha</strong> (<em>numpy.ndarray</em>) – Input alpha matte shape <span class="math notranslate nohighlight">\(h \times  w \times 1\)</span></p></li>
+<li><p><strong>regularization</strong> (<em>float</em>) – Regularization strength <span class="math notranslate nohighlight">\(\epsilon\)</span>, defaults to <span class="math notranslate nohighlight">\(10^{-5}\)</span>.
 Higher regularization results in smoother colors.</p></li>
-<li><p><strong>n_small_iterations</strong> (<em>int</em>) – Number of iterations performed on small scale, defaults to 10.</p></li>
-<li><p><strong>n_big_iterations</strong> (<em>int</em>) – Number of iterations performed on large scale, defaults to 2.</p></li>
-<li><p><strong>small_size</strong> (<em>int</em>) – Threshold that determines at which size <cite>n_small_iterations</cite> should be used.</p></li>
+<li><p><strong>n_small_iterations</strong> (<em>int</em>) – Number of iterations performed on small scale, defaults to <span class="math notranslate nohighlight">\(10\)</span></p></li>
+<li><p><strong>n_big_iterations</strong> (<em>int</em>) – Number of iterations performed on large scale, defaults to <span class="math notranslate nohighlight">\(2\)</span></p></li>
+<li><p><strong>small_size</strong> (<em>int</em>) – Threshold that determines at which size <cite>n_small_iterations</cite> should be used</p></li>
 <li><p><strong>return_background</strong> (<em>bool</em>) – Whether to return the estimated background in addition to the foreground</p></li>
 </ul>
 </dd>
@@ -269,6 +277,14 @@ Higher regularization results in smoother colors.</p></li>
 </p>
 </dd>
 </dl>
+<p class="rubric">Example</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pymatting</span> <span class="k">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">image</span> <span class="o">=</span> <span class="n">load_image</span><span class="p">(</span><span class="s2">&quot;data/lemur/lemur.png&quot;</span><span class="p">,</span> <span class="s2">&quot;RGB&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">alpha</span> <span class="o">=</span> <span class="n">load_image</span><span class="p">(</span><span class="s2">&quot;data/lemur/lemur_alpha.png&quot;</span><span class="p">,</span> <span class="s2">&quot;GRAY&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">F</span> <span class="o">=</span> <span class="n">estimate_foreground_ml</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">return_background</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">F</span><span class="p">,</span> <span class="n">B</span> <span class="o">=</span> <span class="n">estimate_foreground_ml</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">return_background</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <dl class="simple">

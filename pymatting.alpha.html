@@ -224,6 +224,17 @@
 <dd class="field-odd"><p>numpy.ndarray</p>
 </dd>
 </dl>
+<p class="rubric">Example</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pymatting</span> <span class="k">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">image</span> <span class="o">=</span> <span class="n">load_image</span><span class="p">(</span><span class="s2">&quot;data/lemur/lemur.png&quot;</span><span class="p">,</span> <span class="s2">&quot;RGB&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">trimap</span> <span class="o">=</span> <span class="n">load_image</span><span class="p">(</span><span class="s2">&quot;data/lemur/lemur_trimap.png&quot;</span><span class="p">,</span> <span class="s2">&quot;GRAY&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">alpha</span> <span class="o">=</span> <span class="n">estimate_alpha_cf</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">image</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">trimap</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">laplacian_kwargs</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;epsilon&quot;</span><span class="p">:</span> <span class="mf">1e-6</span><span class="p">},</span>
+<span class="gp">... </span>    <span class="n">cg_kwargs</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;maxiter&quot;</span><span class="p">:</span><span class="mi">2000</span><span class="p">})</span>
+</pre></div>
+</div>
 </dd></dl>
 
 </div>
@@ -250,6 +261,17 @@
 <dd class="field-odd"><p>numpy.ndarray</p>
 </dd>
 </dl>
+<p class="rubric">Example</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pymatting</span> <span class="k">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">image</span> <span class="o">=</span> <span class="n">load_image</span><span class="p">(</span><span class="s2">&quot;data/lemur/lemur.png&quot;</span><span class="p">,</span> <span class="s2">&quot;RGB&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">trimap</span> <span class="o">=</span> <span class="n">load_image</span><span class="p">(</span><span class="s2">&quot;data/lemur/lemur_trimap.png&quot;</span><span class="p">,</span> <span class="s2">&quot;GRAY&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">alpha</span> <span class="o">=</span> <span class="n">estimate_alpha_knn</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">image</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">trimap</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">laplacian_kwargs</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;n_neighbors&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">15</span><span class="p">,</span> <span class="mi">10</span><span class="p">]},</span>
+<span class="gp">... </span>    <span class="n">cg_kwargs</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;maxiter&quot;</span><span class="p">:</span><span class="mi">2000</span><span class="p">})</span>
+</pre></div>
+</div>
 </dd></dl>
 
 </div>
@@ -276,6 +298,17 @@
 <dd class="field-odd"><p>numpy.ndarray</p>
 </dd>
 </dl>
+<p class="rubric">Example</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pymatting</span> <span class="k">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">image</span> <span class="o">=</span> <span class="n">load_image</span><span class="p">(</span><span class="s2">&quot;data/lemur/lemur.png&quot;</span><span class="p">,</span> <span class="s2">&quot;RGB&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">trimap</span> <span class="o">=</span> <span class="n">load_image</span><span class="p">(</span><span class="s2">&quot;data/lemur/lemur_trimap.png&quot;</span><span class="p">,</span> <span class="s2">&quot;GRAY&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">alpha</span> <span class="o">=</span> <span class="n">estimate_alpha_lbdm</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">image</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">trimap</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">laplacian_kwargs</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;epsilon&quot;</span><span class="p">:</span> <span class="mf">1e-6</span><span class="p">},</span>
+<span class="gp">... </span>    <span class="n">cg_kwargs</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;maxiter&quot;</span><span class="p">:</span><span class="mi">2000</span><span class="p">})</span>
+</pre></div>
+</div>
 </dd></dl>
 
 </div>
@@ -301,6 +334,17 @@
 <dd class="field-odd"><p>numpy.ndarray</p>
 </dd>
 </dl>
+<p class="rubric">Example</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pymatting</span> <span class="k">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">image</span> <span class="o">=</span> <span class="n">load_image</span><span class="p">(</span><span class="s2">&quot;data/lemur/lemur.png&quot;</span><span class="p">,</span> <span class="s2">&quot;RGB&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">trimap</span> <span class="o">=</span> <span class="n">load_image</span><span class="p">(</span><span class="s2">&quot;data/lemur/lemur_trimap.png&quot;</span><span class="p">,</span> <span class="s2">&quot;GRAY&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">alpha</span> <span class="o">=</span> <span class="n">estimate_alpha_lkm</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">image</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">trimap</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">laplacian_kwargs</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;epsilon&quot;</span><span class="p">:</span> <span class="mf">1e-6</span><span class="p">,</span> <span class="s2">&quot;radius&quot;</span><span class="p">:</span> <span class="mi">15</span><span class="p">},</span>
+<span class="gp">... </span>    <span class="n">cg_kwargs</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;maxiter&quot;</span><span class="p">:</span><span class="mi">2000</span><span class="p">})</span>
+</pre></div>
+</div>
 </dd></dl>
 
 </div>
@@ -327,6 +371,17 @@
 <dd class="field-odd"><p>numpy.ndarray</p>
 </dd>
 </dl>
+<p class="rubric">Example</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pymatting</span> <span class="k">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">image</span> <span class="o">=</span> <span class="n">load_image</span><span class="p">(</span><span class="s2">&quot;data/lemur/lemur.png&quot;</span><span class="p">,</span> <span class="s2">&quot;RGB&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">trimap</span> <span class="o">=</span> <span class="n">load_image</span><span class="p">(</span><span class="s2">&quot;data/lemur/lemur_trimap.png&quot;</span><span class="p">,</span> <span class="s2">&quot;GRAY&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">alpha</span> <span class="o">=</span> <span class="n">estimate_alpha_rw</span><span class="p">(</span>
+<span class="go">....    image,</span>
+<span class="gp">... </span>    <span class="n">trimap</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">laplacian_kwargs</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;sigma&quot;</span><span class="p">:</span> <span class="mf">0.03</span><span class="p">},</span>
+<span class="gp">... </span>    <span class="n">cg_kwargs</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;maxiter&quot;</span><span class="p">:</span><span class="mi">2000</span><span class="p">})</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <span class="target" id="module-pymatting.alpha"></span></div>

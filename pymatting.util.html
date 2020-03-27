@@ -204,45 +204,72 @@
 <span id="pymatting-util-boxfilter-module"></span><h2>pymatting.util.boxfilter module<a class="headerlink" href="#module-pymatting.util.boxfilter" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="pymatting.util.boxfilter.boxfilter">
-<code class="sig-prename descclassname">pymatting.util.boxfilter.</code><code class="sig-name descname">boxfilter</code><span class="sig-paren">(</span><em class="sig-param">src</em>, <em class="sig-param">radius</em>, <em class="sig-param">mode</em><span class="sig-paren">)</span><a class="headerlink" href="#pymatting.util.boxfilter.boxfilter" title="Permalink to this definition">¶</a></dt>
-<dd><p>Computes the boxfilter (uniform blur) of an input image.</p>
+<code class="sig-prename descclassname">pymatting.util.boxfilter.</code><code class="sig-name descname">boxfilter</code><span class="sig-paren">(</span><em class="sig-param">src</em>, <em class="sig-param">radius=3</em>, <em class="sig-param">mode='same'</em><span class="sig-paren">)</span><a class="headerlink" href="#pymatting.util.boxfilter.boxfilter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the boxfilter (uniform blur, i.e. blur with kernel <code class="code docutils literal notranslate"><span class="pre">np.ones(radius,</span> <span class="pre">radius)</span></code>) of an input image.</p>
 <p>Depending on the mode, the input image of size <span class="math notranslate nohighlight">\((h, w)\)</span> is either of shape</p>
 <ul class="simple">
-<li><p><span class="math notranslate nohighlight">\((h - 2 r, w - 2 r)\)</span> in case of <cite>‘valid’</cite> mode</p></li>
-<li><p><span class="math notranslate nohighlight">\((h, w)\)</span> in case of <cite>‘same’</cite> mode</p></li>
-<li><p><span class="math notranslate nohighlight">\((h + 2 r, w + 2 r)\)</span> in case of <cite>‘full’</cite> mode</p></li>
+<li><p><span class="math notranslate nohighlight">\((h - 2 r, w - 2 r)\)</span> in case of ‘valid’ mode</p></li>
+<li><p><span class="math notranslate nohighlight">\((h, w)\)</span> in case of ‘same’ mode</p></li>
+<li><p><span class="math notranslate nohighlight">\((h + 2 r, w + 2 r)\)</span> in case of ‘full’ mode</p></li>
 </ul>
 <img alt="_images/padding.png" src="_images/padding.png" />
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>src</strong> (<em>numpy.ndarray</em>) – Input image</p></li>
-<li><p><strong>radius</strong> (<em>int</em>) – Radius of boxfilter</p></li>
-<li><p><strong>mode</strong> (<em>str</em>) – One of ‘valid’, ‘same’ or ‘full’</p></li>
+<li><p><strong>src</strong> (<em>numpy.ndarray</em>) – Input image having either shape <span class="math notranslate nohighlight">\(h \times w \times d\)</span>  or <span class="math notranslate nohighlight">\(h \times w\)</span></p></li>
+<li><p><strong>radius</strong> (<em>int</em>) – Radius of boxfilter, defaults to <span class="math notranslate nohighlight">\(3\)</span></p></li>
+<li><p><strong>mode</strong> (<em>str</em>) – One of ‘valid’, ‘same’ or ‘full’, defaults to ‘same’</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>dst</strong></p>
+<dd class="field-even"><p><strong>dst</strong> – Blurred image</p>
 </dd>
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p>numpy.ndarray</p>
 </dd>
 </dl>
+<p class="rubric">Example</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pymatting</span> <span class="k">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">boxfilter</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span> <span class="n">radius</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;valid&quot;</span><span class="p">)</span>
+<span class="go">array([[5.]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">boxfilter</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span> <span class="n">radius</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;same&quot;</span><span class="p">)</span>
+<span class="go">array([[3., 3., 3., 2., 1.],</span>
+<span class="go">       [3., 4., 4., 3., 2.],</span>
+<span class="go">       [3., 4., 5., 4., 3.],</span>
+<span class="go">       [2., 3., 4., 4., 3.],</span>
+<span class="go">       [1., 2., 3., 3., 3.]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">boxfilter</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span> <span class="n">radius</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;full&quot;</span><span class="p">)</span>
+<span class="go">array([[1., 1., 1., 1., 1., 0., 0., 0., 0.],</span>
+<span class="go">       [1., 2., 2., 2., 2., 1., 0., 0., 0.],</span>
+<span class="go">       [1., 2., 3., 3., 3., 2., 1., 0., 0.],</span>
+<span class="go">       [1., 2., 3., 4., 4., 3., 2., 1., 0.],</span>
+<span class="go">       [1., 2., 3., 4., 5., 4., 3., 2., 1.],</span>
+<span class="go">       [0., 1., 2., 3., 4., 4., 3., 2., 1.],</span>
+<span class="go">       [0., 0., 1., 2., 3., 3., 3., 2., 1.],</span>
+<span class="go">       [0., 0., 0., 1., 2., 2., 2., 2., 1.],</span>
+<span class="go">       [0., 0., 0., 0., 1., 1., 1., 1., 1.]])</span>
+</pre></div>
+</div>
 </dd></dl>
 
 </div>
 <div class="section" id="module-pymatting.util.kdtree">
 <span id="pymatting-util-kdtree-module"></span><h2>pymatting.util.kdtree module<a class="headerlink" href="#module-pymatting.util.kdtree" title="Permalink to this headline">¶</a></h2>
-<dl class="function">
-<dt id="pymatting.util.kdtree.knn">
-<code class="sig-prename descclassname">pymatting.util.kdtree.</code><code class="sig-name descname">knn</code><span class="sig-paren">(</span><em class="sig-param">data_points</em>, <em class="sig-param">query_points</em>, <em class="sig-param">k</em><span class="sig-paren">)</span><a class="headerlink" href="#pymatting.util.kdtree.knn" title="Permalink to this definition">¶</a></dt>
-<dd><p>Find k nearest neighbors</p>
+<dl class="class">
+<dt id="pymatting.util.kdtree.KDTree">
+<em class="property">class </em><code class="sig-prename descclassname">pymatting.util.kdtree.</code><code class="sig-name descname">KDTree</code><span class="sig-paren">(</span><em class="sig-param">data_points</em>, <em class="sig-param">min_leaf_size=8</em><span class="sig-paren">)</span><a class="headerlink" href="#pymatting.util.kdtree.KDTree" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>KDTree implementation</p>
+<dl class="method">
+<dt id="pymatting.util.kdtree.KDTree.query">
+<code class="sig-name descname">query</code><span class="sig-paren">(</span><em class="sig-param">query_points</em>, <em class="sig-param">k</em><span class="sig-paren">)</span><a class="headerlink" href="#pymatting.util.kdtree.KDTree.query" title="Permalink to this definition">¶</a></dt>
+<dd><p>Query the tree</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>data_points</strong> (<em>numpy.ndarray</em>) – Dataset</p></li>
-<li><p><strong>query_points</strong> (<em>numpy.ndarray</em>) – Data points for which the next neighbours should be calculated</p></li>
-<li><p><strong>k</strong> (<em>int</em>) – Number of neighbors</p></li>
+<li><p><strong>query_points</strong> (numpy.ndarray (of type <cite>np.float32</cite>)) – Data points for which the next neighbours should be calculated</p></li>
+<li><p><strong>k</strong> (<em>int</em>) – Number of neighbors to find</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -253,6 +280,47 @@
 </p>
 </dd>
 </dl>
+<p class="rubric">Example</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pymatting</span> <span class="k">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data_set</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tree</span> <span class="o">=</span> <span class="n">KDTree</span><span class="p">(</span><span class="n">data_set</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tree</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">0.5</span><span class="p">]],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">),</span> <span class="n">k</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="go">(array([[0.14234178, 0.15879704, 0.26760164]], dtype=float32), array([[29, 21, 20]]))</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="pymatting.util.kdtree.knn">
+<code class="sig-prename descclassname">pymatting.util.kdtree.</code><code class="sig-name descname">knn</code><span class="sig-paren">(</span><em class="sig-param">data_points</em>, <em class="sig-param">query_points</em>, <em class="sig-param">k</em><span class="sig-paren">)</span><a class="headerlink" href="#pymatting.util.kdtree.knn" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find k nearest neighbors in a data set. The implementation currently only supports data type <cite>np.float32</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data_points</strong> (numpy.ndarray (of type <cite>np.float32</cite>)) – Dataset with shape <span class="math notranslate nohighlight">\(n \times d\)</span>, where <span class="math notranslate nohighlight">\(n\)</span> is the number of data points in the data set and <span class="math notranslate nohighlight">\(d\)</span> is the dimension of each data point</p></li>
+<li><p><strong>query_points</strong> (numpy.ndarray (of type <cite>np.float32</cite>)) – Data points for which the next neighbours should be calculated</p></li>
+<li><p><strong>k</strong> (<em>int</em>) – Number of neighbors to find</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>distances</strong> (<em>numpy.ndarray</em>) – Distances to the neighbors</p></li>
+<li><p><strong>indices</strong> (<em>numpy.ndarray</em>) – Indices of the k nearest neighbors in original data array</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pymatting</span> <span class="k">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data_set</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">knn</span><span class="p">(</span><span class="n">data_set</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">0.5</span><span class="p">]],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">),</span> <span class="n">k</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="go">(array([[0.16233477, 0.25393516]], dtype=float32), array([[25, 17]]))</span>
+</pre></div>
+</div>
 </dd></dl>
 
 </div>
@@ -273,6 +341,17 @@ Also print elapsed time if message is provided.</p>
 <dd class="field-odd"><p><strong>message</strong> (<em>str</em>) – Message to print in front of passed seconds</p>
 </dd>
 </dl>
+<p class="rubric">Example</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pymatting</span> <span class="k">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">Timer</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+<span class="go">2.6157200919999966</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">Timer</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span><span class="o">.</span><span class="n">stop</span><span class="p">(</span><span class="s1">&#39;Test&#39;</span><span class="p">)</span>
+<span class="go">Test  - 11.654551 seconds</span>
+<span class="go">11.654551381000001</span>
+</pre></div>
+</div>
 </dd></dl>
 
 </dd></dl>
@@ -283,7 +362,7 @@ Also print elapsed time if message is provided.</p>
 <dl class="function">
 <dt id="pymatting.util.util.apply_to_channels">
 <code class="sig-prename descclassname">pymatting.util.util.</code><code class="sig-name descname">apply_to_channels</code><span class="sig-paren">(</span><em class="sig-param">single_channel_func</em><span class="sig-paren">)</span><a class="headerlink" href="#pymatting.util.util.apply_to_channels" title="Permalink to this definition">¶</a></dt>
-<dd><p>Creates a new function which operates on each channel.</p>
+<dd><p>Creates a new function which operates on each channel</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>single_channel_func</strong> (<em>function</em>) – Function that acts on a single color channel</p>
@@ -295,6 +374,17 @@ Also print elapsed time if message is provided.</p>
 <dd class="field-odd"><p>function</p>
 </dd>
 </dl>
+<p class="rubric">Example</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pymatting</span> <span class="k">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">scipy.signal</span> <span class="k">import</span> <span class="n">convolve2d</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">single_channel_fun</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">convolve2d</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)),</span> <span class="s1">&#39;valid&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">multi_channel_fun</span> <span class="o">=</span> <span class="n">apply_to_channels</span><span class="p">(</span><span class="n">single_channel_fun</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">I</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">480</span><span class="p">,</span> <span class="mi">320</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">multi_channel_fun</span><span class="p">(</span><span class="n">I</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span>
+<span class="go">(478, 318, 3)</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="function">
@@ -319,12 +409,20 @@ Also print elapsed time if message is provided.</p>
 <dd class="field-odd"><p>numpy.ndarray</p>
 </dd>
 </dl>
+<p class="rubric">Example</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pymatting</span> <span class="k">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">foreground</span> <span class="o">=</span> <span class="n">load_image</span><span class="p">(</span><span class="s2">&quot;data/lemur/lemur_foreground.png&quot;</span><span class="p">,</span> <span class="s2">&quot;RGB&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">background</span> <span class="o">=</span> <span class="n">load_image</span><span class="p">(</span><span class="s2">&quot;data/lemur/beach.png&quot;</span><span class="p">,</span> <span class="s2">&quot;RGB&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">alpha</span> <span class="o">=</span> <span class="n">load_image</span><span class="p">(</span><span class="s2">&quot;data/lemur/lemur_alpha.png&quot;</span><span class="p">,</span> <span class="s2">&quot;GRAY&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">I</span> <span class="o">=</span> <span class="n">blend</span><span class="p">(</span><span class="n">foreground</span><span class="p">,</span> <span class="n">background</span><span class="p">,</span> <span class="n">alpha</span><span class="p">)</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="function">
 <dt id="pymatting.util.util.div_round_up">
 <code class="sig-prename descclassname">pymatting.util.util.</code><code class="sig-name descname">div_round_up</code><span class="sig-paren">(</span><em class="sig-param">x</em>, <em class="sig-param">n</em><span class="sig-paren">)</span><a class="headerlink" href="#pymatting.util.util.div_round_up" title="Permalink to this definition">¶</a></dt>
-<dd><p>Divides a number x by another integer n</p>
+<dd><p>Divides a number x by another integer n and rounds up the result</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -339,6 +437,12 @@ Also print elapsed time if message is provided.</p>
 <dd class="field-odd"><p>int</p>
 </dd>
 </dl>
+<p class="rubric">Example</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pymatting</span> <span class="k">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">div_round_up</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="go">2</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="function">
@@ -361,6 +465,17 @@ Also print elapsed time if message is provided.</p>
 </p>
 </dd>
 </dl>
+<p class="rubric">Example</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pymatting</span> <span class="k">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">grid_coordinates</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span>
+<span class="go">array([[0, 1],</span>
+<span class="go">       [0, 1]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span>
+<span class="go">array([[0, 0],</span>
+<span class="go">       [1, 1]])</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="function">
@@ -378,6 +493,13 @@ Also print elapsed time if message is provided.</p>
 <dd class="field-odd"><p>bool</p>
 </dd>
 </dl>
+<p class="rubric">Example</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pymatting</span> <span class="k">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">l</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">isiterable</span><span class="p">(</span><span class="n">l</span><span class="p">)</span>
+<span class="go">True</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="function">
@@ -434,12 +556,21 @@ Also print elapsed time if message is provided.</p>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>channel_func</strong> – The same function that operates on all color channels</p>
+<dd class="field-even"><p><strong>product</strong> – Matrix vector product of both arrays</p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>function</p>
+<dd class="field-odd"><p>numpy.ndarray</p>
 </dd>
 </dl>
+<p class="rubric">Example</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pymatting</span> <span class="k">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mat_vec_dot</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">b</span><span class="p">)</span>
+<span class="go">array([1., 1.])</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="function">
@@ -457,6 +588,13 @@ Also print elapsed time if message is provided.</p>
 <dd class="field-odd"><p>numpy.ndarray</p>
 </dd>
 </dl>
+<p class="rubric">Example</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pymatting</span> <span class="k">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">normalize</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">10</span><span class="p">]))</span>
+<span class="go">array([0. , 0.1, 0.3, 1. ])</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="function">
@@ -478,6 +616,15 @@ Also print elapsed time if message is provided.</p>
 <dd class="field-odd"><p>scipy.sparse.spmatrix</p>
 </dd>
 </dl>
+<p class="rubric">Example</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pymatting</span> <span class="k">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">normalize_rows</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="go">array([[0. , 1. ],</span>
+<span class="go">       [0.4, 0.6]])</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="function">
@@ -495,6 +642,17 @@ Also print elapsed time if message is provided.</p>
 <dd class="field-odd"><p>np.ndarray</p>
 </dd>
 </dl>
+<p class="rubric">Example</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pymatting</span> <span class="k">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">A</span>
+<span class="go">array([[0.62750946, 0.12917617],</span>
+<span class="go">       [0.8599449 , 0.5777254 ]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">row_sum</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="go">array([0.75668563, 1.4376703 ])</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="function">
@@ -547,6 +705,14 @@ Images of uint8 dtype should be in range [0, 255]</p></li>
 <dd class="field-odd"><p>scipy.sparse.csr_matrix</p>
 </dd>
 </dl>
+<p class="rubric">Example</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pymatting</span> <span class="k">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sparse_conv_matrix</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">)))</span>
+<span class="go">&lt;9x9 sparse matrix of type &#39;&lt;class &#39;numpy.float64&#39;&gt;&#39;</span>
+<span class="go">with 49 stored elements in Compressed Sparse Row format&gt;</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="function">
@@ -592,6 +758,14 @@ This is useful for combining e.g. rgb color channels or color and alpha channels
 <dd class="field-odd"><p>numpy.ndarray</p>
 </dd>
 </dl>
+<p class="rubric">Example</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pymatting.util.util</span> <span class="k">import</span> <span class="n">stack_images</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">I</span> <span class="o">=</span> <span class="n">stack_images</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">I</span><span class="o">.</span><span class="n">shape</span>
+<span class="go">(4, 5, 6)</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="function">
@@ -609,6 +783,17 @@ This is useful for combining e.g. rgb color channels or color and alpha channels
 <dd class="field-odd"><p>numpy.ndarray</p>
 </dd>
 </dl>
+<p class="rubric">Example</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pymatting</span> <span class="k">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">I</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">to_rgb8</span><span class="p">(</span><span class="n">I</span><span class="p">)</span>
+<span class="go">array([[[255, 255, 255],</span>
+<span class="go">        [  0,   0,   0]],</span>
+<span class="go">       [[  0,   0,   0],</span>
+<span class="go">        [255, 255, 255]]], dtype=uint8)</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="function">
@@ -633,6 +818,21 @@ This is useful for combining e.g. rgb color channels or color and alpha channels
 </p>
 </dd>
 </dl>
+<p class="rubric">Example</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pymatting</span> <span class="k">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">trimap</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">0.2</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">is_fg</span><span class="p">,</span> <span class="n">is_bg</span><span class="p">,</span> <span class="n">is_known</span><span class="p">,</span> <span class="n">is_unknown</span> <span class="o">=</span> <span class="n">trimap_split</span><span class="p">(</span><span class="n">trimap</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">is_fg</span>
+<span class="go">array([ True, False, False, False])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">is_bg</span>
+<span class="go">array([False,  True, False, False])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">is_known</span>
+<span class="go">array([ True,  True, False, False])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">is_unknown</span>
+<span class="go">array([False, False,  True,  True])</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="function">
@@ -653,6 +853,15 @@ This is useful for combining e.g. rgb color channels or color and alpha channels
 <dd class="field-odd"><p>scalar</p>
 </dd>
 </dl>
+<p class="rubric">Example</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pymatting</span> <span class="k">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">vec_vec_dot</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">)</span>
+<span class="go">2.0</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="function">
@@ -673,6 +882,16 @@ This is useful for combining e.g. rgb color channels or color and alpha channels
 <dd class="field-even"><p>numpy.ndarray</p>
 </dd>
 </dl>
+<p class="rubric">Example</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pymatting</span> <span class="k">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">vec_vec_outer</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">)</span>
+<span class="go">array([[1, 2],</span>
+<span class="go">       [2, 4]])</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="function">
@@ -694,6 +913,16 @@ This is useful for combining e.g. rgb color channels or color and alpha channels
 <dd class="field-odd"><p>scipy.sparse.spmatrix</p>
 </dd>
 </dl>
+<p class="rubric">Example</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pymatting</span> <span class="k">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">weights_to_laplacian</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">)))</span>
+<span class="go">matrix([[ 0.75, -0.25, -0.25, -0.25],</span>
+<span class="go">        [-0.25,  0.75, -0.25, -0.25],</span>
+<span class="go">        [-0.25, -0.25,  0.75, -0.25],</span>
+<span class="go">        [-0.25, -0.25, -0.25,  0.75]])</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <span class="target" id="module-pymatting.util"></span></div>

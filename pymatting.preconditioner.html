@@ -251,6 +251,16 @@
 <dd class="field-even"><p><strong>ValueError</strong> – If inappropriate parameter values were passed</p>
 </dd>
 </dl>
+<p class="rubric">Example</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pymatting</span> <span class="k">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">scipy.sparse</span> <span class="k">import</span> <span class="n">csc_matrix</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">2.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">],</span> <span class="p">[</span><span class="mf">3.0</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cholesky_decomposition</span> <span class="o">=</span> <span class="n">ichol</span><span class="p">(</span><span class="n">csc_matrix</span><span class="p">(</span><span class="n">A</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cholesky_decomposition</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">]))</span>
+<span class="go">array([-1.,  1.])</span>
+</pre></div>
+</div>
 </dd></dl>
 
 </div>
@@ -271,6 +281,15 @@
 <dd class="field-odd"><p>function</p>
 </dd>
 </dl>
+<p class="rubric">Example</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pymatting</span> <span class="k">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">preconditioner</span> <span class="o">=</span> <span class="n">jacobi</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">preconditioner</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]))</span>
+<span class="go">array([0.5, 0.4])</span>
+</pre></div>
+</div>
 </dd></dl>
 
 </div>
@@ -284,10 +303,10 @@ The V-Cycle solver was recommended by <a class="bibtex reference internal" href=
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>A</strong> (<em>numpy.ndarray</em>) – Input matrix.</p></li>
-<li><p><strong>shape</strong> (<em>tuple of ints</em>) – Describing the height and width of the image.</p></li>
-<li><p><strong>num_pre_iter</strong> (<em>int</em>) – Number of Jacobi iterations before each V-Cycle, defaults to 1.</p></li>
-<li><p><strong>num_post_iter</strong> (<em>int</em>) – Number of Jacobi iterations after each V-Cycle, defaults to 1.</p></li>
+<li><p><strong>A</strong> (<em>numpy.ndarray</em>) – Input matrix</p></li>
+<li><p><strong>shape</strong> (<em>tuple of ints</em>) – Describing the height and width of the image</p></li>
+<li><p><strong>num_pre_iter</strong> (<em>int</em>) – Number of Jacobi iterations before each V-Cycle, defaults to 1</p></li>
+<li><p><strong>num_post_iter</strong> (<em>int</em>) – Number of Jacobi iterations after each V-Cycle, defaults to 1</p></li>
 <li><p><strong>omega</strong> (<em>float</em>) – Weight parameter for the Jacobi method. If method fails to converge, try different values.</p></li>
 </ul>
 </dd>
@@ -298,6 +317,16 @@ The V-Cycle solver was recommended by <a class="bibtex reference internal" href=
 <dd class="field-odd"><p>function</p>
 </dd>
 </dl>
+<p class="rubric">Example</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pymatting</span> <span class="k">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">scipy.sparse</span> <span class="k">import</span> <span class="n">csc_matrix</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">preconditioner</span> <span class="o">=</span> <span class="n">vcycle</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">preconditioner</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]))</span>
+<span class="go">array([-1.,  1.])</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <span class="target" id="module-pymatting.preconditioner"></span></div>
