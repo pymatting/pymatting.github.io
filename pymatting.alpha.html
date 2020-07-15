@@ -1,8 +1,7 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -12,30 +11,32 @@
   
 
   
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
   
   
   
 
   
-  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script type="text/javascript" src="_static/jquery.js"></script>
-        <script type="text/javascript" src="_static/underscore.js"></script>
-        <script type="text/javascript" src="_static/doctools.js"></script>
-        <script type="text/javascript" src="_static/language_data.js"></script>
-        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
         <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="pymatting.config package" href="pymatting.config.html" />
@@ -53,7 +54,7 @@
           
 
           
-            <a href="index.html" class="icon icon-home"> PyMatting
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> PyMatting
           
 
           
@@ -76,6 +77,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -113,6 +115,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -151,7 +154,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="index.html">Docs</a> &raquo;</li>
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
         
           <li><a href="pymatting.html">API Reference</a> &raquo;</li>
         
@@ -203,9 +206,9 @@
 <h1>pymatting.alpha package<a class="headerlink" href="#pymatting-alpha-package" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="module-pymatting.alpha.estimate_alpha_cf">
 <span id="pymatting-alpha-estimate-alpha-cf-module"></span><h2>pymatting.alpha.estimate_alpha_cf module<a class="headerlink" href="#module-pymatting.alpha.estimate_alpha_cf" title="Permalink to this headline">¶</a></h2>
-<dl class="function">
+<dl class="py function">
 <dt id="pymatting.alpha.estimate_alpha_cf.estimate_alpha_cf">
-<code class="sig-prename descclassname">pymatting.alpha.estimate_alpha_cf.</code><code class="sig-name descname">estimate_alpha_cf</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">trimap</em>, <em class="sig-param">preconditioner=None</em>, <em class="sig-param">laplacian_kwargs={}</em>, <em class="sig-param">cg_kwargs={}</em><span class="sig-paren">)</span><a class="headerlink" href="#pymatting.alpha.estimate_alpha_cf.estimate_alpha_cf" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">pymatting.alpha.estimate_alpha_cf.</code><code class="sig-name descname">estimate_alpha_cf</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">image</span></em>, <em class="sig-param"><span class="n">trimap</span></em>, <em class="sig-param"><span class="n">preconditioner</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">laplacian_kwargs</span><span class="o">=</span><span class="default_value">{}</span></em>, <em class="sig-param"><span class="n">cg_kwargs</span><span class="o">=</span><span class="default_value">{}</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymatting.alpha.estimate_alpha_cf.estimate_alpha_cf" title="Permalink to this definition">¶</a></dt>
 <dd><p>Estimate alpha from an input image and an input trimap using Closed-Form Alpha Matting as proposed by <a class="bibtex reference internal" href="references.html#levin2007closed" id="id1">[LLW07]</a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -225,7 +228,7 @@
 </dd>
 </dl>
 <p class="rubric">Example</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pymatting</span> <span class="k">import</span> <span class="o">*</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pymatting</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">image</span> <span class="o">=</span> <span class="n">load_image</span><span class="p">(</span><span class="s2">&quot;data/lemur/lemur.png&quot;</span><span class="p">,</span> <span class="s2">&quot;RGB&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">trimap</span> <span class="o">=</span> <span class="n">load_image</span><span class="p">(</span><span class="s2">&quot;data/lemur/lemur_trimap.png&quot;</span><span class="p">,</span> <span class="s2">&quot;GRAY&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">alpha</span> <span class="o">=</span> <span class="n">estimate_alpha_cf</span><span class="p">(</span>
@@ -240,9 +243,9 @@
 </div>
 <div class="section" id="module-pymatting.alpha.estimate_alpha_knn">
 <span id="pymatting-alpha-estimate-alpha-knn-module"></span><h2>pymatting.alpha.estimate_alpha_knn module<a class="headerlink" href="#module-pymatting.alpha.estimate_alpha_knn" title="Permalink to this headline">¶</a></h2>
-<dl class="function">
+<dl class="py function">
 <dt id="pymatting.alpha.estimate_alpha_knn.estimate_alpha_knn">
-<code class="sig-prename descclassname">pymatting.alpha.estimate_alpha_knn.</code><code class="sig-name descname">estimate_alpha_knn</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">trimap</em>, <em class="sig-param">preconditioner=None</em>, <em class="sig-param">laplacian_kwargs={}</em>, <em class="sig-param">cg_kwargs={}</em><span class="sig-paren">)</span><a class="headerlink" href="#pymatting.alpha.estimate_alpha_knn.estimate_alpha_knn" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">pymatting.alpha.estimate_alpha_knn.</code><code class="sig-name descname">estimate_alpha_knn</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">image</span></em>, <em class="sig-param"><span class="n">trimap</span></em>, <em class="sig-param"><span class="n">preconditioner</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">laplacian_kwargs</span><span class="o">=</span><span class="default_value">{}</span></em>, <em class="sig-param"><span class="n">cg_kwargs</span><span class="o">=</span><span class="default_value">{}</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymatting.alpha.estimate_alpha_knn.estimate_alpha_knn" title="Permalink to this definition">¶</a></dt>
 <dd><p>Estimate alpha from an input image and an input trimap using KNN Matting as proposed by <a class="bibtex reference internal" href="references.html#chen2013knn" id="id2">[CLT13]</a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -262,7 +265,7 @@
 </dd>
 </dl>
 <p class="rubric">Example</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pymatting</span> <span class="k">import</span> <span class="o">*</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pymatting</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">image</span> <span class="o">=</span> <span class="n">load_image</span><span class="p">(</span><span class="s2">&quot;data/lemur/lemur.png&quot;</span><span class="p">,</span> <span class="s2">&quot;RGB&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">trimap</span> <span class="o">=</span> <span class="n">load_image</span><span class="p">(</span><span class="s2">&quot;data/lemur/lemur_trimap.png&quot;</span><span class="p">,</span> <span class="s2">&quot;GRAY&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">alpha</span> <span class="o">=</span> <span class="n">estimate_alpha_knn</span><span class="p">(</span>
@@ -277,9 +280,9 @@
 </div>
 <div class="section" id="module-pymatting.alpha.estimate_alpha_lbdm">
 <span id="pymatting-alpha-estimate-alpha-lbdm-module"></span><h2>pymatting.alpha.estimate_alpha_lbdm module<a class="headerlink" href="#module-pymatting.alpha.estimate_alpha_lbdm" title="Permalink to this headline">¶</a></h2>
-<dl class="function">
+<dl class="py function">
 <dt id="pymatting.alpha.estimate_alpha_lbdm.estimate_alpha_lbdm">
-<code class="sig-prename descclassname">pymatting.alpha.estimate_alpha_lbdm.</code><code class="sig-name descname">estimate_alpha_lbdm</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">trimap</em>, <em class="sig-param">preconditioner=None</em>, <em class="sig-param">laplacian_kwargs={}</em>, <em class="sig-param">cg_kwargs={}</em><span class="sig-paren">)</span><a class="headerlink" href="#pymatting.alpha.estimate_alpha_lbdm.estimate_alpha_lbdm" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">pymatting.alpha.estimate_alpha_lbdm.</code><code class="sig-name descname">estimate_alpha_lbdm</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">image</span></em>, <em class="sig-param"><span class="n">trimap</span></em>, <em class="sig-param"><span class="n">preconditioner</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">laplacian_kwargs</span><span class="o">=</span><span class="default_value">{}</span></em>, <em class="sig-param"><span class="n">cg_kwargs</span><span class="o">=</span><span class="default_value">{}</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymatting.alpha.estimate_alpha_lbdm.estimate_alpha_lbdm" title="Permalink to this definition">¶</a></dt>
 <dd><p>Estimate alpha from an input image and an input trimap using Learning Based Digital Matting as proposed by <a class="bibtex reference internal" href="references.html#zheng2009learning" id="id3">[ZK09]</a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -299,7 +302,7 @@
 </dd>
 </dl>
 <p class="rubric">Example</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pymatting</span> <span class="k">import</span> <span class="o">*</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pymatting</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">image</span> <span class="o">=</span> <span class="n">load_image</span><span class="p">(</span><span class="s2">&quot;data/lemur/lemur.png&quot;</span><span class="p">,</span> <span class="s2">&quot;RGB&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">trimap</span> <span class="o">=</span> <span class="n">load_image</span><span class="p">(</span><span class="s2">&quot;data/lemur/lemur_trimap.png&quot;</span><span class="p">,</span> <span class="s2">&quot;GRAY&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">alpha</span> <span class="o">=</span> <span class="n">estimate_alpha_lbdm</span><span class="p">(</span>
@@ -314,9 +317,9 @@
 </div>
 <div class="section" id="module-pymatting.alpha.estimate_alpha_lkm">
 <span id="pymatting-alpha-estimate-alpha-lkm-module"></span><h2>pymatting.alpha.estimate_alpha_lkm module<a class="headerlink" href="#module-pymatting.alpha.estimate_alpha_lkm" title="Permalink to this headline">¶</a></h2>
-<dl class="function">
+<dl class="py function">
 <dt id="pymatting.alpha.estimate_alpha_lkm.estimate_alpha_lkm">
-<code class="sig-prename descclassname">pymatting.alpha.estimate_alpha_lkm.</code><code class="sig-name descname">estimate_alpha_lkm</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">trimap</em>, <em class="sig-param">laplacian_kwargs={}</em>, <em class="sig-param">cg_kwargs={}</em><span class="sig-paren">)</span><a class="headerlink" href="#pymatting.alpha.estimate_alpha_lkm.estimate_alpha_lkm" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">pymatting.alpha.estimate_alpha_lkm.</code><code class="sig-name descname">estimate_alpha_lkm</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">image</span></em>, <em class="sig-param"><span class="n">trimap</span></em>, <em class="sig-param"><span class="n">laplacian_kwargs</span><span class="o">=</span><span class="default_value">{}</span></em>, <em class="sig-param"><span class="n">cg_kwargs</span><span class="o">=</span><span class="default_value">{}</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymatting.alpha.estimate_alpha_lkm.estimate_alpha_lkm" title="Permalink to this definition">¶</a></dt>
 <dd><p>Estimate alpha from an input image and an input trimap using Learning Based Digital Matting as proposed by <a class="bibtex reference internal" href="references.html#he2010fast" id="id4">[HST10]</a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -335,7 +338,7 @@
 </dd>
 </dl>
 <p class="rubric">Example</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pymatting</span> <span class="k">import</span> <span class="o">*</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pymatting</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">image</span> <span class="o">=</span> <span class="n">load_image</span><span class="p">(</span><span class="s2">&quot;data/lemur/lemur.png&quot;</span><span class="p">,</span> <span class="s2">&quot;RGB&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">trimap</span> <span class="o">=</span> <span class="n">load_image</span><span class="p">(</span><span class="s2">&quot;data/lemur/lemur_trimap.png&quot;</span><span class="p">,</span> <span class="s2">&quot;GRAY&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">alpha</span> <span class="o">=</span> <span class="n">estimate_alpha_lkm</span><span class="p">(</span>
@@ -350,9 +353,9 @@
 </div>
 <div class="section" id="module-pymatting.alpha.estimate_alpha_rw">
 <span id="pymatting-alpha-estimate-alpha-rw-module"></span><h2>pymatting.alpha.estimate_alpha_rw module<a class="headerlink" href="#module-pymatting.alpha.estimate_alpha_rw" title="Permalink to this headline">¶</a></h2>
-<dl class="function">
+<dl class="py function">
 <dt id="pymatting.alpha.estimate_alpha_rw.estimate_alpha_rw">
-<code class="sig-prename descclassname">pymatting.alpha.estimate_alpha_rw.</code><code class="sig-name descname">estimate_alpha_rw</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">trimap</em>, <em class="sig-param">preconditioner=None</em>, <em class="sig-param">laplacian_kwargs={}</em>, <em class="sig-param">cg_kwargs={}</em><span class="sig-paren">)</span><a class="headerlink" href="#pymatting.alpha.estimate_alpha_rw.estimate_alpha_rw" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">pymatting.alpha.estimate_alpha_rw.</code><code class="sig-name descname">estimate_alpha_rw</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">image</span></em>, <em class="sig-param"><span class="n">trimap</span></em>, <em class="sig-param"><span class="n">preconditioner</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">laplacian_kwargs</span><span class="o">=</span><span class="default_value">{}</span></em>, <em class="sig-param"><span class="n">cg_kwargs</span><span class="o">=</span><span class="default_value">{}</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymatting.alpha.estimate_alpha_rw.estimate_alpha_rw" title="Permalink to this definition">¶</a></dt>
 <dd><p>Estimate alpha from an input image and an input trimap using Learning Based Digital Matting as proposed by <a class="bibtex reference internal" href="references.html#grady2005random" id="id5">[GSAW05]</a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -372,7 +375,7 @@
 </dd>
 </dl>
 <p class="rubric">Example</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pymatting</span> <span class="k">import</span> <span class="o">*</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pymatting</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">image</span> <span class="o">=</span> <span class="n">load_image</span><span class="p">(</span><span class="s2">&quot;data/lemur/lemur.png&quot;</span><span class="p">,</span> <span class="s2">&quot;RGB&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">trimap</span> <span class="o">=</span> <span class="n">load_image</span><span class="p">(</span><span class="s2">&quot;data/lemur/lemur_trimap.png&quot;</span><span class="p">,</span> <span class="s2">&quot;GRAY&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">alpha</span> <span class="o">=</span> <span class="n">estimate_alpha_rw</span><span class="p">(</span>
@@ -411,11 +414,19 @@
 
   <div role="contentinfo">
     <p>
+        
         &copy; Copyright 2019, Thomas Germer, Tobias Uelwer, Stefan Conrad, Stefan Harmeling
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -426,7 +437,6 @@
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {
