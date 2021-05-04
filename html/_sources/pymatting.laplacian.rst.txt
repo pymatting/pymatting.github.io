@@ -1,0 +1,65 @@
+pymatting.laplacian package
+===========================
+
+
+pymatting.laplacian.cf\_laplacian module
+----------------------------------------
+
+.. automodule:: pymatting.laplacian.cf_laplacian
+   :members:
+   :no-undoc-members:
+   :show-inheritance:
+
+pymatting.laplacian.knn\_laplacian module
+-----------------------------------------
+
+.. automodule:: pymatting.laplacian.knn_laplacian
+   :members:
+   :no-undoc-members:
+   :show-inheritance:
+
+pymatting.laplacian.laplacian module
+------------------------------------
+
+.. automodule:: pymatting.laplacian.laplacian
+   :members:
+   :no-undoc-members:
+   :show-inheritance:
+
+pymatting.laplacian.lbdm\_laplacian module
+------------------------------------------
+
+.. automodule:: pymatting.laplacian.lbdm_laplacian
+   :members:
+   :no-undoc-members:
+   :show-inheritance:
+
+pymatting.laplacian.lkm\_laplacian module
+-----------------------------------------
+
+.. automodule:: pymatting.laplacian.lkm_laplacian
+   :members:
+   :no-undoc-members:
+   :show-inheritance:
+
+pymatting.laplacian.rw\_laplacian module
+----------------------------------------
+
+.. automodule:: pymatting.laplacian.rw_laplacian
+   :members:
+   :no-undoc-members:
+   :show-inheritance:
+
+pymatting.laplacian.uniform\_laplacian module
+---------------------------------------------
+
+.. automodule:: pymatting.laplacian.uniform_laplacian
+   :members:
+   :no-undoc-members:
+   :show-inheritance:
+
+
+.. automodule:: pymatting.laplacian
+   :members:
+   :no-undoc-members:
+   :show-inheritance:

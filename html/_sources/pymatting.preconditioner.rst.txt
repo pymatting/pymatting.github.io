@@ -1,0 +1,33 @@
+pymatting.preconditioner package
+================================
+
+
+pymatting.preconditioner.ichol module
+-------------------------------------
+
+.. automodule:: pymatting.preconditioner.ichol
+   :members:
+   :no-undoc-members:
+   :show-inheritance:
+
+pymatting.preconditioner.jacobi module
+--------------------------------------
+
+.. automodule:: pymatting.preconditioner.jacobi
+   :members:
+   :no-undoc-members:
+   :show-inheritance:
+
+pymatting.preconditioner.vcycle module
+--------------------------------------
+
+.. automodule:: pymatting.preconditioner.vcycle
+   :members:
+   :no-undoc-members:
+   :show-inheritance:
+
+
+.. automodule:: pymatting.preconditioner
+   :members:
+   :no-undoc-members:
+   :show-inheritance:

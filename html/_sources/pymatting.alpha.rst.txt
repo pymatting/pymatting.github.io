@@ -1,0 +1,49 @@
+pymatting.alpha package
+=======================
+
+
+pymatting.alpha.estimate\_alpha\_cf module
+------------------------------------------
+
+.. automodule:: pymatting.alpha.estimate_alpha_cf
+   :members:
+   :no-undoc-members:
+   :show-inheritance:
+
+pymatting.alpha.estimate\_alpha\_knn module
+-------------------------------------------
+
+.. automodule:: pymatting.alpha.estimate_alpha_knn
+   :members:
+   :no-undoc-members:
+   :show-inheritance:
+
+pymatting.alpha.estimate\_alpha\_lbdm module
+--------------------------------------------
+
+.. automodule:: pymatting.alpha.estimate_alpha_lbdm
+   :members:
+   :no-undoc-members:
+   :show-inheritance:
+
+pymatting.alpha.estimate\_alpha\_lkm module
+-------------------------------------------
+
+.. automodule:: pymatting.alpha.estimate_alpha_lkm
+   :members:
+   :no-undoc-members:
+   :show-inheritance:
+
+pymatting.alpha.estimate\_alpha\_rw module
+------------------------------------------
+
+.. automodule:: pymatting.alpha.estimate_alpha_rw
+   :members:
+   :no-undoc-members:
+   :show-inheritance:
+
+
+.. automodule:: pymatting.alpha
+   :members:
+   :no-undoc-members:
+   :show-inheritance:

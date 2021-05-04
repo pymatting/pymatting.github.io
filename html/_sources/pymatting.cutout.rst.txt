@@ -1,0 +1,17 @@
+pymatting.cutout package
+========================
+
+
+pymatting.cutout.cutout module
+------------------------------
+
+.. automodule:: pymatting.cutout.cutout
+   :members:
+   :no-undoc-members:
+   :show-inheritance:
+
+
+.. automodule:: pymatting.cutout
+   :members:
+   :no-undoc-members:
+   :show-inheritance:

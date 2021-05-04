@@ -1,0 +1,360 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Examples &mdash; PyMatting 1.1.3 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Benchmarks and Visualization" href="benchmark.html" />
+    <link rel="prev" title="pymatting.util package" href="pymatting.util.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> PyMatting
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="start.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pymatting.html">API Reference</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#simple-example">Simple Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#advanced-example">Advanced Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#expert-example">Expert Example</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="benchmark.html">Benchmarks and Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">PyMatting</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Examples</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/examples.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="examples">
+<h1>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h1>
+<p>We provide different examples at different levels of abstraction.</p>
+<div class="section" id="simple-example">
+<span id="example-simple"></span><h2>Simple Example<a class="headerlink" href="#simple-example" title="Permalink to this headline">¶</a></h2>
+<p>This simple example is intended for application-oriented users.
+All parameters were set beforehand and should work well on most images.
+The <code class="code docutils literal notranslate"><span class="pre">cutout()</span></code> method employs closed-form alpha matting <a class="bibtex reference internal" href="references.html#levin2007closed" id="id1">[LLW07]</a> and multi-level foreground extraction <a class="bibtex reference internal" href="references.html#germer2020multilevel" id="id2">[GUCH20]</a>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pymatting</span> <span class="kn">import</span> <span class="n">cutout</span>
+
+<span class="n">cutout</span><span class="p">(</span>
+   <span class="c1"># input image path</span>
+   <span class="s2">&quot;../data/lemur/lemur.png&quot;</span><span class="p">,</span>
+   <span class="c1"># input trimap path</span>
+   <span class="s2">&quot;../data/lemur/lemur_trimap.png&quot;</span><span class="p">,</span>
+   <span class="c1"># output cutout path</span>
+   <span class="s2">&quot;lemur_cutout.png&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="advanced-example">
+<h2>Advanced Example<a class="headerlink" href="#advanced-example" title="Permalink to this headline">¶</a></h2>
+<p>The following example demonstrates the use of the <code class="code docutils literal notranslate"><span class="pre">estimate_alpha_cf()</span></code> method as well as the <code class="code docutils literal notranslate"><span class="pre">estimate_foreground_ml()</span></code> method.
+Both methods can be easily replaced by other methods from the <code class="code docutils literal notranslate"><span class="pre">pymatting.alpha</span></code> and from the <code class="code docutils literal notranslate"><span class="pre">pymatting.foreground</span></code> module, respectively.
+Parameters can be tweaked by passing them to the corresponding function calls.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pymatting</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">scale</span> <span class="o">=</span> <span class="mf">1.0</span>
+
+<span class="n">image</span> <span class="o">=</span> <span class="n">load_image</span><span class="p">(</span><span class="s2">&quot;../data/lemur/lemur.png&quot;</span><span class="p">,</span> <span class="s2">&quot;RGB&quot;</span><span class="p">,</span> <span class="n">scale</span><span class="p">,</span> <span class="s2">&quot;box&quot;</span><span class="p">)</span>
+<span class="n">trimap</span> <span class="o">=</span> <span class="n">load_image</span><span class="p">(</span><span class="s2">&quot;../data/lemur/lemur_trimap.png&quot;</span><span class="p">,</span> <span class="s2">&quot;GRAY&quot;</span><span class="p">,</span> <span class="n">scale</span><span class="p">,</span> <span class="s2">&quot;nearest&quot;</span><span class="p">)</span>
+
+<span class="c1"># estimate alpha from image and trimap</span>
+<span class="n">alpha</span> <span class="o">=</span> <span class="n">estimate_alpha_cf</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">trimap</span><span class="p">)</span>
+
+<span class="c1"># make gray background</span>
+<span class="n">background</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">image</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="n">background</span><span class="p">[:,</span> <span class="p">:]</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">]</span>
+
+<span class="c1"># estimate foreground from image and alpha</span>
+<span class="n">foreground</span> <span class="o">=</span> <span class="n">estimate_foreground_ml</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">alpha</span><span class="p">)</span>
+
+<span class="c1"># blend foreground with background and alpha, less color bleeding</span>
+<span class="n">new_image</span> <span class="o">=</span> <span class="n">blend</span><span class="p">(</span><span class="n">foreground</span><span class="p">,</span> <span class="n">background</span><span class="p">,</span> <span class="n">alpha</span><span class="p">)</span>
+
+<span class="c1"># save results in a grid</span>
+<span class="n">images</span> <span class="o">=</span> <span class="p">[</span><span class="n">image</span><span class="p">,</span> <span class="n">trimap</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">new_image</span><span class="p">]</span>
+<span class="n">grid</span> <span class="o">=</span> <span class="n">make_grid</span><span class="p">(</span><span class="n">images</span><span class="p">)</span>
+<span class="n">save_image</span><span class="p">(</span><span class="s2">&quot;lemur_grid.png&quot;</span><span class="p">,</span> <span class="n">grid</span><span class="p">)</span>
+
+<span class="c1"># save cutout</span>
+<span class="n">cutout</span> <span class="o">=</span> <span class="n">stack_images</span><span class="p">(</span><span class="n">foreground</span><span class="p">,</span> <span class="n">alpha</span><span class="p">)</span>
+<span class="n">save_image</span><span class="p">(</span><span class="s2">&quot;lemur_cutout.png&quot;</span><span class="p">,</span> <span class="n">cutout</span><span class="p">)</span>
+
+<span class="c1"># just blending the image with alpha results in color bleeding</span>
+<span class="n">color_bleeding</span> <span class="o">=</span> <span class="n">blend</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">background</span><span class="p">,</span> <span class="n">alpha</span><span class="p">)</span>
+<span class="n">grid</span> <span class="o">=</span> <span class="n">make_grid</span><span class="p">([</span><span class="n">color_bleeding</span><span class="p">,</span> <span class="n">new_image</span><span class="p">])</span>
+<span class="n">save_image</span><span class="p">(</span><span class="s2">&quot;lemur_color_bleeding.png&quot;</span><span class="p">,</span> <span class="n">grid</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="expert-example">
+<h2>Expert Example<a class="headerlink" href="#expert-example" title="Permalink to this headline">¶</a></h2>
+<p>The third example provides an insight how PyMatting is working under-the-hood. The matting Laplacian matrix <code class="code docutils literal notranslate"><span class="pre">L</span></code> and the system of linear equations <code class="code docutils literal notranslate"><span class="pre">A</span> <span class="pre">x</span> <span class="pre">=</span> <span class="pre">b</span></code> are constructed manually. The solution vector <code class="code docutils literal notranslate"><span class="pre">x</span></code> is the flattened alpha matte.
+The alpha matte <code class="code docutils literal notranslate"><span class="pre">alpha</span></code> is then calculated by solving the linear system using the <code class="code docutils literal notranslate"><span class="pre">cg()</span></code> method. The convergence of the <code class="code docutils literal notranslate"><span class="pre">cg()</span></code> method is accelerated with a preconditioner using the <code class="code docutils literal notranslate"><span class="pre">ichol()</span></code> method.
+This example is intended for developers and (future) contributors to demonstrate the implementation of the different alpha matting methods.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pymatting</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">scipy.sparse</span>
+
+<span class="n">scale</span> <span class="o">=</span> <span class="mf">1.0</span>
+
+<span class="n">image</span> <span class="o">=</span> <span class="n">load_image</span><span class="p">(</span><span class="s2">&quot;../data/lemur/lemur.png&quot;</span><span class="p">,</span> <span class="s2">&quot;RGB&quot;</span><span class="p">,</span> <span class="n">scale</span><span class="p">,</span> <span class="s2">&quot;box&quot;</span><span class="p">)</span>
+<span class="n">trimap</span> <span class="o">=</span> <span class="n">load_image</span><span class="p">(</span><span class="s2">&quot;../data/lemur/lemur_trimap.png&quot;</span><span class="p">,</span> <span class="s2">&quot;GRAY&quot;</span><span class="p">,</span> <span class="n">scale</span><span class="p">,</span> <span class="s2">&quot;nearest&quot;</span><span class="p">)</span>
+
+<span class="c1"># height and width of trimap</span>
+<span class="n">h</span><span class="p">,</span> <span class="n">w</span> <span class="o">=</span> <span class="n">trimap</span><span class="o">.</span><span class="n">shape</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span>
+
+<span class="c1"># calculate laplacian matrix</span>
+<span class="n">L</span> <span class="o">=</span> <span class="n">cf_laplacian</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+
+<span class="c1"># decompose trimap</span>
+<span class="n">is_fg</span><span class="p">,</span> <span class="n">is_bg</span><span class="p">,</span> <span class="n">is_known</span><span class="p">,</span> <span class="n">is_unknown</span> <span class="o">=</span> <span class="n">trimap_split</span><span class="p">(</span><span class="n">trimap</span><span class="p">)</span>
+
+<span class="c1"># constraint weight</span>
+<span class="n">lambda_value</span> <span class="o">=</span> <span class="mf">100.0</span>
+
+<span class="c1"># build constraint pixel selection matrix</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">lambda_value</span> <span class="o">*</span> <span class="n">is_known</span>
+<span class="n">C</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">sparse</span><span class="o">.</span><span class="n">diags</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+
+<span class="c1"># build constraint value vector</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">lambda_value</span> <span class="o">*</span> <span class="n">is_fg</span>
+
+<span class="c1"># build linear system</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">L</span> <span class="o">+</span> <span class="n">C</span>
+
+<span class="c1"># build ichol preconditioner for faster convergence</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">tocsr</span><span class="p">()</span>
+<span class="n">A</span><span class="o">.</span><span class="n">sum_duplicates</span><span class="p">()</span>
+<span class="n">M</span> <span class="o">=</span> <span class="n">ichol</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+
+<span class="c1"># solve linear system with conjugate gradient descent</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">cg</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">M</span><span class="o">=</span><span class="n">M</span><span class="p">)</span>
+
+<span class="c1"># clip and reshape result vector</span>
+<span class="n">alpha</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span>
+
+<span class="n">save_image</span><span class="p">(</span><span class="s2">&quot;lemur_alpha.png&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+    <a href="https://github.com/pymatting/pymatting">
+        <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://github.blog/wp-content/uploads/2008/12/forkme_right_gray_6d6d6d.png?resize=149%2C149" alt="Fork me on GitHub">
+    </a>
+
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="benchmark.html" class="btn btn-neutral float-right" title="Benchmarks and Visualization" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="pymatting.util.html" class="btn btn-neutral float-left" title="pymatting.util package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020, Thomas Germer, Tobias Uelwer, Stefan Conrad, Stefan Harmeling.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
