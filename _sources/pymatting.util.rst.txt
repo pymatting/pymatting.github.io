@@ -35,7 +35,6 @@ pymatting.util.util module
    :show-inheritance:
 
 
-
 .. automodule:: pymatting.util
    :members:
    :no-undoc-members:

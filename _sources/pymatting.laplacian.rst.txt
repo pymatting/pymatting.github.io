@@ -59,7 +59,6 @@ pymatting.laplacian.uniform\_laplacian module
    :show-inheritance:
 
 
-
 .. automodule:: pymatting.laplacian
    :members:
    :no-undoc-members:

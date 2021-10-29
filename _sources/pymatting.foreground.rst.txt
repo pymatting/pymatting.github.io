@@ -35,7 +35,6 @@ pymatting.foreground.estimate\_foreground\_ml\_pyopencl module
    :show-inheritance:
 
 
-
 .. automodule:: pymatting.foreground
    :members:
    :no-undoc-members:

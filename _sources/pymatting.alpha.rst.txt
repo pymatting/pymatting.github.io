@@ -43,7 +43,6 @@ pymatting.alpha.estimate\_alpha\_rw module
    :show-inheritance:
 
 
-
 .. automodule:: pymatting.alpha
    :members:
    :no-undoc-members:

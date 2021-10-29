@@ -27,7 +27,6 @@ pymatting.preconditioner.vcycle module
    :show-inheritance:
 
 
-
 .. automodule:: pymatting.preconditioner
    :members:
    :no-undoc-members:

@@ -19,7 +19,6 @@ pymatting.solver.cg module
    :show-inheritance:
 
 
-
 .. automodule:: pymatting.solver
    :members:
    :no-undoc-members:
