@@ -1,73 +1,37 @@
-
-
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
-  
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
-  <title>pymatting.util package &mdash; PyMatting 1.1.3 documentation</title>
-  
-
-  
-  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-
-  
-  
-
-  
-  
-
-  
-
-  
+  <title>pymatting.util package &mdash; PyMatting 1.1.5 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
-    
-    <script type="text/javascript" src="_static/js/theme.js"></script>
-
-    
+        <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Examples" href="examples.html" />
     <link rel="prev" title="pymatting.solver package" href="pymatting.solver.html" /> 
 </head>
 
-<body class="wy-body-for-nav">
-
-   
+<body class="wy-body-for-nav"> 
   <div class="wy-grid-for-nav">
-    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-          
-
-          
             <a href="index.html" class="icon icon-home"> PyMatting
-          
-
-          
           </a>
-
-          
-            
-            
-          
-
-          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -75,19 +39,8 @@
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-
-          
-        </div>
-
-        
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
-              <p class="caption"><span class="caption-text">Contents:</span></p>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="start.html">Getting Started</a></li>
@@ -113,74 +66,32 @@
 <li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
 </ul>
 
-            
-          
         </div>
-        
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="index.html">PyMatting</a>
-        
       </nav>
 
-
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
+          <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-    
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-        
           <li><a href="pymatting.html">API Reference</a> &raquo;</li>
-        
       <li>pymatting.util package</li>
-    
-    
       <li class="wy-breadcrumbs-aside">
-        
-          
             <a href="_sources/pymatting.util.rst.txt" rel="nofollow"> View page source</a>
-          
-        
       </li>
-    
   </ul>
-
-  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
 
            <div itemprop="articleBody">
-            
+             
   
 <style>
 /* CSS overrides for sphinx_rtd_theme */
@@ -205,13 +116,13 @@
     text-align: unset;
 }
 </style>
-<div class="section" id="pymatting-util-package">
-<h1>pymatting.util package<a class="headerlink" href="#pymatting-util-package" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="module-pymatting.util.boxfilter">
-<span id="pymatting-util-boxfilter-module"></span><h2>pymatting.util.boxfilter module<a class="headerlink" href="#module-pymatting.util.boxfilter" title="Permalink to this headline">¶</a></h2>
+<section id="pymatting-util-package">
+<h1>pymatting.util package<a class="headerlink" href="#pymatting-util-package" title="Permalink to this headline"></a></h1>
+<section id="module-pymatting.util.boxfilter">
+<span id="pymatting-util-boxfilter-module"></span><h2>pymatting.util.boxfilter module<a class="headerlink" href="#module-pymatting.util.boxfilter" title="Permalink to this headline"></a></h2>
 <dl class="py function">
-<dt id="pymatting.util.boxfilter.boxfilter">
-<code class="sig-prename descclassname"><span class="pre">pymatting.util.boxfilter.</span></code><code class="sig-name descname"><span class="pre">boxfilter</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">src</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">radius</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'same'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymatting.util.boxfilter.boxfilter" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="pymatting.util.boxfilter.boxfilter">
+<span class="sig-prename descclassname"><span class="pre">pymatting.util.boxfilter.</span></span><span class="sig-name descname"><span class="pre">boxfilter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">src</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">radius</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'same'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymatting.util.boxfilter.boxfilter" title="Permalink to this definition"></a></dt>
 <dd><p>Computes the boxfilter (uniform blur, i.e. blur with kernel <code class="code docutils literal notranslate"><span class="pre">np.ones(radius,</span> <span class="pre">radius)</span></code>) of an input image.</p>
 <p>Depending on the mode, the input image of size <span class="math notranslate nohighlight">\((h, w)\)</span> is either of shape</p>
 <ul class="simple">
@@ -260,17 +171,17 @@
 </div>
 </dd></dl>
 
-</div>
-<div class="section" id="module-pymatting.util.kdtree">
-<span id="pymatting-util-kdtree-module"></span><h2>pymatting.util.kdtree module<a class="headerlink" href="#module-pymatting.util.kdtree" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="module-pymatting.util.kdtree">
+<span id="pymatting-util-kdtree-module"></span><h2>pymatting.util.kdtree module<a class="headerlink" href="#module-pymatting.util.kdtree" title="Permalink to this headline"></a></h2>
 <dl class="py class">
-<dt id="pymatting.util.kdtree.KDTree">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">pymatting.util.kdtree.</span></code><code class="sig-name descname"><span class="pre">KDTree</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_points</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_leaf_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">8</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymatting.util.kdtree.KDTree" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="pymatting.util.kdtree.KDTree">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pymatting.util.kdtree.</span></span><span class="sig-name descname"><span class="pre">KDTree</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_points</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_leaf_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">8</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymatting.util.kdtree.KDTree" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>KDTree implementation</p>
 <dl class="py method">
-<dt id="pymatting.util.kdtree.KDTree.query">
-<code class="sig-name descname"><span class="pre">query</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query_points</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymatting.util.kdtree.KDTree.query" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="pymatting.util.kdtree.KDTree.query">
+<span class="sig-name descname"><span class="pre">query</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query_points</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymatting.util.kdtree.KDTree.query" title="Permalink to this definition"></a></dt>
 <dd><p>Query the tree</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -301,8 +212,8 @@
 </dd></dl>
 
 <dl class="py function">
-<dt id="pymatting.util.kdtree.knn">
-<code class="sig-prename descclassname"><span class="pre">pymatting.util.kdtree.</span></code><code class="sig-name descname"><span class="pre">knn</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_points</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">query_points</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymatting.util.kdtree.knn" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="pymatting.util.kdtree.knn">
+<span class="sig-prename descclassname"><span class="pre">pymatting.util.kdtree.</span></span><span class="sig-name descname"><span class="pre">knn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_points</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">query_points</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymatting.util.kdtree.knn" title="Permalink to this definition"></a></dt>
 <dd><p>Find k nearest neighbors in a data set. The implementation currently only supports data type <cite>np.float32</cite>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -330,17 +241,17 @@
 </div>
 </dd></dl>
 
-</div>
-<div class="section" id="module-pymatting.util.timer">
-<span id="pymatting-util-timer-module"></span><h2>pymatting.util.timer module<a class="headerlink" href="#module-pymatting.util.timer" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="module-pymatting.util.timer">
+<span id="pymatting-util-timer-module"></span><h2>pymatting.util.timer module<a class="headerlink" href="#module-pymatting.util.timer" title="Permalink to this headline"></a></h2>
 <dl class="py class">
-<dt id="pymatting.util.timer.Timer">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">pymatting.util.timer.</span></code><code class="sig-name descname"><span class="pre">Timer</span></code><a class="headerlink" href="#pymatting.util.timer.Timer" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="pymatting.util.timer.Timer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pymatting.util.timer.</span></span><span class="sig-name descname"><span class="pre">Timer</span></span><a class="headerlink" href="#pymatting.util.timer.Timer" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Timer for benchmarking</p>
 <dl class="py method">
-<dt id="pymatting.util.timer.Timer.stop">
-<code class="sig-name descname"><span class="pre">stop</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymatting.util.timer.Timer.stop" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="pymatting.util.timer.Timer.stop">
+<span class="sig-name descname"><span class="pre">stop</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymatting.util.timer.Timer.stop" title="Permalink to this definition"></a></dt>
 <dd><p>Return and print time since last stop-call or initialization.
 Also print elapsed time if message is provided.</p>
 <dl class="field-list simple">
@@ -363,12 +274,12 @@ Also print elapsed time if message is provided.</p>
 
 </dd></dl>
 
-</div>
-<div class="section" id="module-pymatting.util.util">
-<span id="pymatting-util-util-module"></span><h2>pymatting.util.util module<a class="headerlink" href="#module-pymatting.util.util" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="module-pymatting.util.util">
+<span id="pymatting-util-util-module"></span><h2>pymatting.util.util module<a class="headerlink" href="#module-pymatting.util.util" title="Permalink to this headline"></a></h2>
 <dl class="py function">
-<dt id="pymatting.util.util.apply_to_channels">
-<code class="sig-prename descclassname"><span class="pre">pymatting.util.util.</span></code><code class="sig-name descname"><span class="pre">apply_to_channels</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">single_channel_func</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymatting.util.util.apply_to_channels" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="pymatting.util.util.apply_to_channels">
+<span class="sig-prename descclassname"><span class="pre">pymatting.util.util.</span></span><span class="sig-name descname"><span class="pre">apply_to_channels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">single_channel_func</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymatting.util.util.apply_to_channels" title="Permalink to this definition"></a></dt>
 <dd><p>Creates a new function which operates on each channel</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -395,8 +306,8 @@ Also print elapsed time if message is provided.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt id="pymatting.util.util.blend">
-<code class="sig-prename descclassname"><span class="pre">pymatting.util.util.</span></code><code class="sig-name descname"><span class="pre">blend</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">foreground</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">background</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymatting.util.util.blend" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="pymatting.util.util.blend">
+<span class="sig-prename descclassname"><span class="pre">pymatting.util.util.</span></span><span class="sig-name descname"><span class="pre">blend</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">foreground</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">background</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymatting.util.util.blend" title="Permalink to this definition"></a></dt>
 <dd><p>This function composes a new image for given foreground image, background image and alpha matte.</p>
 <p>This is done by applying the composition equation</p>
 <div class="math notranslate nohighlight">
@@ -427,8 +338,8 @@ Also print elapsed time if message is provided.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt id="pymatting.util.util.div_round_up">
-<code class="sig-prename descclassname"><span class="pre">pymatting.util.util.</span></code><code class="sig-name descname"><span class="pre">div_round_up</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymatting.util.util.div_round_up" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="pymatting.util.util.div_round_up">
+<span class="sig-prename descclassname"><span class="pre">pymatting.util.util.</span></span><span class="sig-name descname"><span class="pre">div_round_up</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymatting.util.util.div_round_up" title="Permalink to this definition"></a></dt>
 <dd><p>Divides a number x by another integer n and rounds up the result</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -453,8 +364,8 @@ Also print elapsed time if message is provided.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt id="pymatting.util.util.fix_trimap">
-<code class="sig-prename descclassname"><span class="pre">pymatting.util.util.</span></code><code class="sig-name descname"><span class="pre">fix_trimap</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">trimap</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lower_threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">upper_threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.9</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymatting.util.util.fix_trimap" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="pymatting.util.util.fix_trimap">
+<span class="sig-prename descclassname"><span class="pre">pymatting.util.util.</span></span><span class="sig-name descname"><span class="pre">fix_trimap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">trimap</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lower_threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">upper_threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.9</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymatting.util.util.fix_trimap" title="Permalink to this definition"></a></dt>
 <dd><p>Fixes broken trimap <span class="math notranslate nohighlight">\(T\)</span> by thresholding the values</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}T^{\text{fixed}}_{ij}=
@@ -489,8 +400,8 @@ Also print elapsed time if message is provided.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt id="pymatting.util.util.grid_coordinates">
-<code class="sig-prename descclassname"><span class="pre">pymatting.util.util.</span></code><code class="sig-name descname"><span class="pre">grid_coordinates</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">width</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flatten</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymatting.util.util.grid_coordinates" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="pymatting.util.util.grid_coordinates">
+<span class="sig-prename descclassname"><span class="pre">pymatting.util.util.</span></span><span class="sig-name descname"><span class="pre">grid_coordinates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">width</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flatten</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymatting.util.util.grid_coordinates" title="Permalink to this definition"></a></dt>
 <dd><p>Calculates image pixel coordinates for an image with a specified shape</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -522,8 +433,8 @@ Also print elapsed time if message is provided.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt id="pymatting.util.util.isiterable">
-<code class="sig-prename descclassname"><span class="pre">pymatting.util.util.</span></code><code class="sig-name descname"><span class="pre">isiterable</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymatting.util.util.isiterable" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="pymatting.util.util.isiterable">
+<span class="sig-prename descclassname"><span class="pre">pymatting.util.util.</span></span><span class="sig-name descname"><span class="pre">isiterable</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymatting.util.util.isiterable" title="Permalink to this definition"></a></dt>
 <dd><p>Checks if an object is iterable</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -546,8 +457,8 @@ Also print elapsed time if message is provided.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt id="pymatting.util.util.load_image">
-<code class="sig-prename descclassname"><span class="pre">pymatting.util.util.</span></code><code class="sig-name descname"><span class="pre">load_image</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resample</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'box'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymatting.util.util.load_image" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="pymatting.util.util.load_image">
+<span class="sig-prename descclassname"><span class="pre">pymatting.util.util.</span></span><span class="sig-name descname"><span class="pre">load_image</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resample</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'box'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymatting.util.util.load_image" title="Permalink to this definition"></a></dt>
 <dd><p>This function can be used to load an image from a file.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -566,8 +477,8 @@ Also print elapsed time if message is provided.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt id="pymatting.util.util.make_grid">
-<code class="sig-prename descclassname"><span class="pre">pymatting.util.util.</span></code><code class="sig-name descname"><span class="pre">make_grid</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">images</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ny</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymatting.util.util.make_grid" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="pymatting.util.util.make_grid">
+<span class="sig-prename descclassname"><span class="pre">pymatting.util.util.</span></span><span class="sig-name descname"><span class="pre">make_grid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">images</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ny</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymatting.util.util.make_grid" title="Permalink to this definition"></a></dt>
 <dd><p>Plots a grid of images.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -588,8 +499,8 @@ Also print elapsed time if message is provided.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt id="pymatting.util.util.mat_vec_dot">
-<code class="sig-prename descclassname"><span class="pre">pymatting.util.util.</span></code><code class="sig-name descname"><span class="pre">mat_vec_dot</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">A</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymatting.util.util.mat_vec_dot" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="pymatting.util.util.mat_vec_dot">
+<span class="sig-prename descclassname"><span class="pre">pymatting.util.util.</span></span><span class="sig-name descname"><span class="pre">mat_vec_dot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">A</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymatting.util.util.mat_vec_dot" title="Permalink to this definition"></a></dt>
 <dd><p>Calculates the matrix vector product for two arrays.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -617,8 +528,8 @@ Also print elapsed time if message is provided.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt id="pymatting.util.util.normalize">
-<code class="sig-prename descclassname"><span class="pre">pymatting.util.util.</span></code><code class="sig-name descname"><span class="pre">normalize</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">values</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymatting.util.util.normalize" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="pymatting.util.util.normalize">
+<span class="sig-prename descclassname"><span class="pre">pymatting.util.util.</span></span><span class="sig-name descname"><span class="pre">normalize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">values</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymatting.util.util.normalize" title="Permalink to this definition"></a></dt>
 <dd><p>Normalizes an array such that all values are between 0 and 1</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -641,8 +552,8 @@ Also print elapsed time if message is provided.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt id="pymatting.util.util.normalize_rows">
-<code class="sig-prename descclassname"><span class="pre">pymatting.util.util.</span></code><code class="sig-name descname"><span class="pre">normalize_rows</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">A</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymatting.util.util.normalize_rows" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="pymatting.util.util.normalize_rows">
+<span class="sig-prename descclassname"><span class="pre">pymatting.util.util.</span></span><span class="sig-name descname"><span class="pre">normalize_rows</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">A</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymatting.util.util.normalize_rows" title="Permalink to this definition"></a></dt>
 <dd><p>Normalize the rows of a matrix</p>
 <p>Rows with sum below threshold are left as-is.</p>
 <dl class="field-list simple">
@@ -671,8 +582,8 @@ Also print elapsed time if message is provided.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt id="pymatting.util.util.row_sum">
-<code class="sig-prename descclassname"><span class="pre">pymatting.util.util.</span></code><code class="sig-name descname"><span class="pre">row_sum</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">A</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymatting.util.util.row_sum" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="pymatting.util.util.row_sum">
+<span class="sig-prename descclassname"><span class="pre">pymatting.util.util.</span></span><span class="sig-name descname"><span class="pre">row_sum</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">A</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymatting.util.util.row_sum" title="Permalink to this definition"></a></dt>
 <dd><p>Calculate the sum of each row of a matrix</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -699,8 +610,8 @@ Also print elapsed time if message is provided.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt id="pymatting.util.util.save_image">
-<code class="sig-prename descclassname"><span class="pre">pymatting.util.util.</span></code><code class="sig-name descname"><span class="pre">save_image</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">image</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">make_directory</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymatting.util.util.save_image" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="pymatting.util.util.save_image">
+<span class="sig-prename descclassname"><span class="pre">pymatting.util.util.</span></span><span class="sig-name descname"><span class="pre">save_image</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">image</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">make_directory</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymatting.util.util.save_image" title="Permalink to this definition"></a></dt>
 <dd><p>Given a path, save an image there.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -716,8 +627,8 @@ Images of uint8 dtype should be in range [0, 255]</p></li>
 </dd></dl>
 
 <dl class="py function">
-<dt id="pymatting.util.util.show_images">
-<code class="sig-prename descclassname"><span class="pre">pymatting.util.util.</span></code><code class="sig-name descname"><span class="pre">show_images</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">images</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymatting.util.util.show_images" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="pymatting.util.util.show_images">
+<span class="sig-prename descclassname"><span class="pre">pymatting.util.util.</span></span><span class="sig-name descname"><span class="pre">show_images</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">images</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymatting.util.util.show_images" title="Permalink to this definition"></a></dt>
 <dd><p>Plot grid of images.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -730,8 +641,8 @@ Images of uint8 dtype should be in range [0, 255]</p></li>
 </dd></dl>
 
 <dl class="py function">
-<dt id="pymatting.util.util.sparse_conv_matrix">
-<code class="sig-prename descclassname"><span class="pre">pymatting.util.util.</span></code><code class="sig-name descname"><span class="pre">sparse_conv_matrix</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">width</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kernel</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymatting.util.util.sparse_conv_matrix" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="pymatting.util.util.sparse_conv_matrix">
+<span class="sig-prename descclassname"><span class="pre">pymatting.util.util.</span></span><span class="sig-name descname"><span class="pre">sparse_conv_matrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">width</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kernel</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymatting.util.util.sparse_conv_matrix" title="Permalink to this definition"></a></dt>
 <dd><p>Calculates a convolution matrix that can be applied to a vectorized image</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -759,8 +670,8 @@ Images of uint8 dtype should be in range [0, 255]</p></li>
 </dd></dl>
 
 <dl class="py function">
-<dt id="pymatting.util.util.sparse_conv_matrix_with_offsets">
-<code class="sig-prename descclassname"><span class="pre">pymatting.util.util.</span></code><code class="sig-name descname"><span class="pre">sparse_conv_matrix_with_offsets</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">width</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kernel</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dy</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymatting.util.util.sparse_conv_matrix_with_offsets" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="pymatting.util.util.sparse_conv_matrix_with_offsets">
+<span class="sig-prename descclassname"><span class="pre">pymatting.util.util.</span></span><span class="sig-name descname"><span class="pre">sparse_conv_matrix_with_offsets</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">width</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kernel</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dy</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymatting.util.util.sparse_conv_matrix_with_offsets" title="Permalink to this definition"></a></dt>
 <dd><p>Calculates a convolution matrix that can be applied to a vectorized image</p>
 <p>Additionaly, this function allows to specify which pixels should be used for the convoltion, i.e.</p>
 <div class="math notranslate nohighlight">
@@ -786,8 +697,8 @@ Images of uint8 dtype should be in range [0, 255]</p></li>
 </dd></dl>
 
 <dl class="py function">
-<dt id="pymatting.util.util.stack_images">
-<code class="sig-prename descclassname"><span class="pre">pymatting.util.util.</span></code><code class="sig-name descname"><span class="pre">stack_images</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">images</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymatting.util.util.stack_images" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="pymatting.util.util.stack_images">
+<span class="sig-prename descclassname"><span class="pre">pymatting.util.util.</span></span><span class="sig-name descname"><span class="pre">stack_images</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">images</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymatting.util.util.stack_images" title="Permalink to this definition"></a></dt>
 <dd><p>This function stacks images along the third axis.
 This is useful for combining e.g. rgb color channels or color and alpha channels.</p>
 <dl class="field-list simple">
@@ -812,8 +723,8 @@ This is useful for combining e.g. rgb color channels or color and alpha channels
 </dd></dl>
 
 <dl class="py function">
-<dt id="pymatting.util.util.to_rgb8">
-<code class="sig-prename descclassname"><span class="pre">pymatting.util.util.</span></code><code class="sig-name descname"><span class="pre">to_rgb8</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">image</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymatting.util.util.to_rgb8" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="pymatting.util.util.to_rgb8">
+<span class="sig-prename descclassname"><span class="pre">pymatting.util.util.</span></span><span class="sig-name descname"><span class="pre">to_rgb8</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">image</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymatting.util.util.to_rgb8" title="Permalink to this definition"></a></dt>
 <dd><p>Convertes an image to rgb8 color space</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -840,14 +751,16 @@ This is useful for combining e.g. rgb color channels or color and alpha channels
 </dd></dl>
 
 <dl class="py function">
-<dt id="pymatting.util.util.trimap_split">
-<code class="sig-prename descclassname"><span class="pre">pymatting.util.util.</span></code><code class="sig-name descname"><span class="pre">trimap_split</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">trimap</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flatten</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bg_threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fg_threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.9</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymatting.util.util.trimap_split" title="Permalink to this definition">¶</a></dt>
-<dd><p>This function splits the trimap into foreground pixels, background pixels and classifies each pixel as known or unknown.</p>
-<p>Foreground pixels are pixels where the trimap has value 1.0. Background pixels are pixels where the trimap has value 0.</p>
+<dt class="sig sig-object py" id="pymatting.util.util.trimap_split">
+<span class="sig-prename descclassname"><span class="pre">pymatting.util.util.</span></span><span class="sig-name descname"><span class="pre">trimap_split</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">trimap</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flatten</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bg_threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fg_threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.9</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymatting.util.util.trimap_split" title="Permalink to this definition"></a></dt>
+<dd><p>This function splits the trimap into foreground pixels, background pixels, and unknown pixels.</p>
+<p>Foreground pixels are pixels where the trimap has values larger than or equal to <cite>fg_threshold</cite> (default: 0.9).
+Background pixels are pixels where the trimap has values smaller than or equal to <cite>bg_threshold</cite> (default: 0.1).
+Pixels with other values are assumed to be unknown.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>trimap</strong> (<em>numpy.ndarray</em>) – Trimap with shape <span class="math notranslate nohighlight">\(h\times w\times 1\)</span></p></li>
+<li><p><strong>trimap</strong> (<em>numpy.ndarray</em>) – Trimap with shape <span class="math notranslate nohighlight">\(h \times w\)</span></p></li>
 <li><p><strong>flatten</strong> (<em>bool</em>) – If true np.flatten is called on the trimap</p></li>
 </ul>
 </dd>
@@ -881,8 +794,8 @@ This is useful for combining e.g. rgb color channels or color and alpha channels
 </dd></dl>
 
 <dl class="py function">
-<dt id="pymatting.util.util.vec_vec_dot">
-<code class="sig-prename descclassname"><span class="pre">pymatting.util.util.</span></code><code class="sig-name descname"><span class="pre">vec_vec_dot</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymatting.util.util.vec_vec_dot" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="pymatting.util.util.vec_vec_dot">
+<span class="sig-prename descclassname"><span class="pre">pymatting.util.util.</span></span><span class="sig-name descname"><span class="pre">vec_vec_dot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymatting.util.util.vec_vec_dot" title="Permalink to this definition"></a></dt>
 <dd><p>Computes the dot product of two vectors.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -910,8 +823,8 @@ This is useful for combining e.g. rgb color channels or color and alpha channels
 </dd></dl>
 
 <dl class="py function">
-<dt id="pymatting.util.util.vec_vec_outer">
-<code class="sig-prename descclassname"><span class="pre">pymatting.util.util.</span></code><code class="sig-name descname"><span class="pre">vec_vec_outer</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymatting.util.util.vec_vec_outer" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="pymatting.util.util.vec_vec_outer">
+<span class="sig-prename descclassname"><span class="pre">pymatting.util.util.</span></span><span class="sig-name descname"><span class="pre">vec_vec_outer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymatting.util.util.vec_vec_outer" title="Permalink to this definition"></a></dt>
 <dd><p>Computes the outer product of two vectors</p>
 <dl class="simple">
 <dt>a: numpy.ndarray</dt><dd><p>First vector (if np.ndim(b) &gt; 1 the function calculates the product for the two last axes)</p>
@@ -940,8 +853,8 @@ This is useful for combining e.g. rgb color channels or color and alpha channels
 </dd></dl>
 
 <dl class="py function">
-<dt id="pymatting.util.util.weights_to_laplacian">
-<code class="sig-prename descclassname"><span class="pre">pymatting.util.util.</span></code><code class="sig-name descname"><span class="pre">weights_to_laplacian</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">W</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">regularization</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymatting.util.util.weights_to_laplacian" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="pymatting.util.util.weights_to_laplacian">
+<span class="sig-prename descclassname"><span class="pre">pymatting.util.util.</span></span><span class="sig-name descname"><span class="pre">weights_to_laplacian</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">W</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">regularization</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymatting.util.util.weights_to_laplacian" title="Permalink to this definition"></a></dt>
 <dd><p>Calculates the random walk normlized Laplacian matrix from the weight matrix</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -970,59 +883,42 @@ This is useful for combining e.g. rgb color channels or color and alpha channels
 </div>
 </dd></dl>
 
-<span class="target" id="module-pymatting.util"></span></div>
-</div>
+<span class="target" id="module-pymatting.util"></span></section>
+</section>
 
 
            </div>
-           
           </div>
     <a href="https://github.com/pymatting/pymatting">
         <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://github.blog/wp-content/uploads/2008/12/forkme_right_gray_6d6d6d.png?resize=149%2C149" alt="Fork me on GitHub">
     </a>
 
-          <footer>
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="examples.html" class="btn btn-neutral float-right" title="Examples" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="pymatting.solver.html" class="btn btn-neutral float-left" title="pymatting.solver package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="examples.html" class="btn btn-neutral float-right" title="Examples" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
 
   <div role="contentinfo">
-    <p>
-        &#169; Copyright 2020, Thomas Germer, Tobias Uelwer, Stefan Conrad, Stefan Harmeling.
-
-    </p>
+    <p>&#169; Copyright 2022, Thomas Germer, Tobias Uelwer, Stefan Conrad, Stefan Harmeling.</p>
   </div>
-    
-    
-    
-    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
     <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
 
 </footer>
         </div>
       </div>
-
     </section>
-
   </div>
-  
-
-  <script type="text/javascript">
+  <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-
-  
-  
-    
-   
+  </script> 
 
 </body>
 </html>
