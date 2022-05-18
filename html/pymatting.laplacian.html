@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>pymatting.laplacian package &mdash; PyMatting 1.1.5 documentation</title>
+  <title>pymatting.laplacian package &mdash; PyMatting 1.1.6 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -16,8 +16,8 @@
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
         <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+        <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -153,14 +153,16 @@ Laplacian entries for known pixels will have undefined values.</p></li>
 <span id="pymatting-laplacian-knn-laplacian-module"></span><h2>pymatting.laplacian.knn_laplacian module<a class="headerlink" href="#module-pymatting.laplacian.knn_laplacian" title="Permalink to this headline"></a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="pymatting.laplacian.knn_laplacian.knn_laplacian">
-<span class="sig-prename descclassname"><span class="pre">pymatting.laplacian.knn_laplacian.</span></span><span class="sig-name descname"><span class="pre">knn_laplacian</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">image</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_neighbors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[20,</span> <span class="pre">10]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">distance_weights</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[2.0,</span> <span class="pre">0.1]</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymatting.laplacian.knn_laplacian.knn_laplacian" title="Permalink to this definition"></a></dt>
-<dd><p>This function calculates the KNN matting Laplacian matrix as described in <a class="bibtex reference internal" href="references.html#chen2013knn" id="id2">[CLT13]</a>.</p>
+<span class="sig-prename descclassname"><span class="pre">pymatting.laplacian.knn_laplacian.</span></span><span class="sig-name descname"><span class="pre">knn_laplacian</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">image</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_neighbors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[20,</span> <span class="pre">10]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">distance_weights</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[2.0,</span> <span class="pre">0.1]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kernel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'binary'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymatting.laplacian.knn_laplacian.knn_laplacian" title="Permalink to this definition"></a></dt>
+<dd><p>This function calculates the KNN matting Laplacian matrix similar to <a class="bibtex reference internal" href="references.html#chen2013knn" id="id2">[CLT13]</a>.
+We use a kernel of 1 instead of a soft kernel by default since the former is faster to compute and both produce almost identical results in all our experiments, which is to be expected as the soft kernel is very close to 1 in most cases.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>image</strong> (<em>numpy.ndarray</em>) – Image with shape <span class="math notranslate nohighlight">\(h\times w \times 3\)</span></p></li>
 <li><p><strong>n_neighbors</strong> (<em>list of ints</em>) – Number of neighbors to consider. If <code class="code docutils literal notranslate"><span class="pre">len(n_neighbors)&gt;1</span></code> multiple nearest neighbor calculations are done and merged, defaults to <cite>[20, 10]</cite>, i.e. first 20 neighbors are considered and in the second run <span class="math notranslate nohighlight">\(10\)</span> neighbors. The pixel distances are then weighted by the <code class="code docutils literal notranslate"><span class="pre">distance_weights</span></code>.</p></li>
 <li><p><strong>distance_weights</strong> (<em>list of floats</em>) – Weight of distance in feature vector, defaults to <cite>[2.0, 0.1]</cite>.</p></li>
+<li><p><strong>kernel</strong> (<em>str</em>) – Must be either “binary” or “soft”. Default is “binary”.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
