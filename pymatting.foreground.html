@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>pymatting.foreground package &mdash; PyMatting 1.1.4 documentation</title>
+  <title>pymatting.foreground package &mdash; PyMatting 1.1.6 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -16,6 +16,8 @@
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+        <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -47,10 +49,10 @@
 <li class="toctree-l2"><a class="reference internal" href="pymatting.config.html">pymatting.config package</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pymatting.cutout.html">pymatting.cutout package</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">pymatting.foreground package</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#pymatting-foreground-estimate-foreground-cf-module">pymatting.foreground.estimate_foreground_cf module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#pymatting-foreground-estimate-foreground-ml-module">pymatting.foreground.estimate_foreground_ml module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-pymatting.foreground.estimate_foreground_cf">pymatting.foreground.estimate_foreground_cf module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-pymatting.foreground.estimate_foreground_ml">pymatting.foreground.estimate_foreground_ml module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pymatting-foreground-estimate-foreground-ml-cupy-module">pymatting.foreground.estimate_foreground_ml_cupy module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#pymatting-foreground-estimate-foreground-ml-pyopencl-module">pymatting.foreground.estimate_foreground_ml_pyopencl module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-pymatting.foreground">pymatting.foreground.estimate_foreground_ml_pyopencl module</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="pymatting.laplacian.html">pymatting.laplacian package</a></li>
@@ -116,17 +118,107 @@
 </style>
 <section id="pymatting-foreground-package">
 <h1>pymatting.foreground package<a class="headerlink" href="#pymatting-foreground-package" title="Permalink to this headline"></a></h1>
-<section id="pymatting-foreground-estimate-foreground-cf-module">
-<h2>pymatting.foreground.estimate_foreground_cf module<a class="headerlink" href="#pymatting-foreground-estimate-foreground-cf-module" title="Permalink to this headline"></a></h2>
+<section id="module-pymatting.foreground.estimate_foreground_cf">
+<span id="pymatting-foreground-estimate-foreground-cf-module"></span><h2>pymatting.foreground.estimate_foreground_cf module<a class="headerlink" href="#module-pymatting.foreground.estimate_foreground_cf" title="Permalink to this headline"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="pymatting.foreground.estimate_foreground_cf.estimate_foreground_cf">
+<span class="sig-prename descclassname"><span class="pre">pymatting.foreground.estimate_foreground_cf.</span></span><span class="sig-name descname"><span class="pre">estimate_foreground_cf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">image</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">regularization</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-05</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rtol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-05</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">neighbors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[(-</span> <span class="pre">1,</span> <span class="pre">0),</span> <span class="pre">(1,</span> <span class="pre">0),</span> <span class="pre">(0,</span> <span class="pre">-</span> <span class="pre">1),</span> <span class="pre">(0,</span> <span class="pre">1)]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_background</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">foreground_guess</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">background_guess</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ichol_kwargs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cg_kwargs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{}</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymatting.foreground.estimate_foreground_cf.estimate_foreground_cf" title="Permalink to this definition"></a></dt>
+<dd><p>Estimates the foreground of an image given alpha matte and image.</p>
+<p>This method is based on the publication <a class="bibtex reference internal" href="references.html#levin2007closed" id="id1">[LLW07]</a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>image</strong> (<em>numpy.ndarray</em>) – Input image with shape <span class="math notranslate nohighlight">\(h \times  w \times d\)</span></p></li>
+<li><p><strong>alpha</strong> (<em>numpy.ndarray</em>) – Input alpha matte with shape <span class="math notranslate nohighlight">\(h \times  w\)</span></p></li>
+<li><p><strong>regularization</strong> (<em>float</em>) – Regularization strength <span class="math notranslate nohighlight">\(\epsilon\)</span>, defaults to <span class="math notranslate nohighlight">\(10^{-5}\)</span></p></li>
+<li><p><strong>neighbors</strong> (<em>list of tuples of ints</em>) – List of relative positions that define the neighborhood of a pixel</p></li>
+<li><p><strong>return_background</strong> (<em>bool</em>) – Whether to return the estimated background in addition to the foreground</p></li>
+<li><p><strong>foreground_guess</strong> (<em>numpy.ndarray</em>) – An initial guess for the foreground image in order to accelerate convergence.
+Using input image by default.</p></li>
+<li><p><strong>background_guess</strong> (<em>numpy.ndarray</em>) – An initial guess for the background image.
+Using input image by default.</p></li>
+<li><p><strong>ichol_kwargs</strong> (<em>dictionary</em>) – Keyword arguments for the incomplete Cholesky preconditioner</p></li>
+<li><p><strong>cg_kwargs</strong> (<em>dictionary</em>) – Keyword arguments for the conjugate gradient descent solver</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>F</strong> (<em>numpy.ndarray</em>) – Extracted foreground</p></li>
+<li><p><strong>B</strong> (<em>numpy.ndarray</em>) – Extracted background (not returned by default)</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pymatting</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">image</span> <span class="o">=</span> <span class="n">load_image</span><span class="p">(</span><span class="s2">&quot;data/lemur/lemur.png&quot;</span><span class="p">,</span> <span class="s2">&quot;RGB&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">alpha</span> <span class="o">=</span> <span class="n">load_image</span><span class="p">(</span><span class="s2">&quot;data/lemur/lemur_alpha.png&quot;</span><span class="p">,</span> <span class="s2">&quot;GRAY&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">F</span> <span class="o">=</span> <span class="n">estimate_foreground_cf</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">return_background</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">F</span><span class="p">,</span> <span class="n">B</span> <span class="o">=</span> <span class="n">estimate_foreground_cf</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">return_background</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">stack_images</span></code></dt><dd><p>This function can be used to place the foreground on a new background.</p>
+</dd>
+</dl>
+</div>
+</dd></dl>
+
 </section>
-<section id="pymatting-foreground-estimate-foreground-ml-module">
-<h2>pymatting.foreground.estimate_foreground_ml module<a class="headerlink" href="#pymatting-foreground-estimate-foreground-ml-module" title="Permalink to this headline"></a></h2>
+<section id="module-pymatting.foreground.estimate_foreground_ml">
+<span id="pymatting-foreground-estimate-foreground-ml-module"></span><h2>pymatting.foreground.estimate_foreground_ml module<a class="headerlink" href="#module-pymatting.foreground.estimate_foreground_ml" title="Permalink to this headline"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="pymatting.foreground.estimate_foreground_ml.estimate_foreground_ml">
+<span class="sig-prename descclassname"><span class="pre">pymatting.foreground.estimate_foreground_ml.</span></span><span class="sig-name descname"><span class="pre">estimate_foreground_ml</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">image</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">regularization</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-05</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_small_iterations</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_big_iterations</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">small_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">32</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_background</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gradient_weight</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymatting.foreground.estimate_foreground_ml.estimate_foreground_ml" title="Permalink to this definition"></a></dt>
+<dd><p>Estimates the foreground of an image given its alpha matte.</p>
+<p>See <a class="bibtex reference internal" href="references.html#germer2020multilevel" id="id2">[GUCH20]</a> for reference.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>image</strong> (<em>numpy.ndarray</em>) – Input image with shape <span class="math notranslate nohighlight">\(h \times  w \times d\)</span></p></li>
+<li><p><strong>alpha</strong> (<em>numpy.ndarray</em>) – Input alpha matte shape <span class="math notranslate nohighlight">\(h \times  w\)</span></p></li>
+<li><p><strong>regularization</strong> (<em>float</em>) – Regularization strength <span class="math notranslate nohighlight">\(\epsilon\)</span>, defaults to <span class="math notranslate nohighlight">\(10^{-5}\)</span>.
+Higher regularization results in smoother colors.</p></li>
+<li><p><strong>n_small_iterations</strong> (<em>int</em>) – Number of iterations performed on small scale, defaults to <span class="math notranslate nohighlight">\(10\)</span></p></li>
+<li><p><strong>n_big_iterations</strong> (<em>int</em>) – Number of iterations performed on large scale, defaults to <span class="math notranslate nohighlight">\(2\)</span></p></li>
+<li><p><strong>small_size</strong> (<em>int</em>) – Threshold that determines at which size <cite>n_small_iterations</cite> should be used</p></li>
+<li><p><strong>return_background</strong> (<em>bool</em>) – Whether to return the estimated background in addition to the foreground</p></li>
+<li><p><strong>gradient_weight</strong> (<em>float</em>) – Larger values enforce smoother foregrounds, defaults to <span class="math notranslate nohighlight">\(1\)</span></p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>F</strong> (<em>numpy.ndarray</em>) – Extracted foreground</p></li>
+<li><p><strong>B</strong> (<em>numpy.ndarray</em>) – Extracted background</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pymatting</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">image</span> <span class="o">=</span> <span class="n">load_image</span><span class="p">(</span><span class="s2">&quot;data/lemur/lemur.png&quot;</span><span class="p">,</span> <span class="s2">&quot;RGB&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">alpha</span> <span class="o">=</span> <span class="n">load_image</span><span class="p">(</span><span class="s2">&quot;data/lemur/lemur_alpha.png&quot;</span><span class="p">,</span> <span class="s2">&quot;GRAY&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">F</span> <span class="o">=</span> <span class="n">estimate_foreground_ml</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">return_background</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">F</span><span class="p">,</span> <span class="n">B</span> <span class="o">=</span> <span class="n">estimate_foreground_ml</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">return_background</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">stack_images</span></code></dt><dd><p>This function can be used to place the foreground on a new background.</p>
+</dd>
+</dl>
+</div>
+</dd></dl>
+
 </section>
 <section id="pymatting-foreground-estimate-foreground-ml-cupy-module">
 <h2>pymatting.foreground.estimate_foreground_ml_cupy module<a class="headerlink" href="#pymatting-foreground-estimate-foreground-ml-cupy-module" title="Permalink to this headline"></a></h2>
 </section>
-<section id="pymatting-foreground-estimate-foreground-ml-pyopencl-module">
-<h2>pymatting.foreground.estimate_foreground_ml_pyopencl module<a class="headerlink" href="#pymatting-foreground-estimate-foreground-ml-pyopencl-module" title="Permalink to this headline"></a></h2>
+<section id="module-pymatting.foreground">
+<span id="pymatting-foreground-estimate-foreground-ml-pyopencl-module"></span><h2>pymatting.foreground.estimate_foreground_ml_pyopencl module<a class="headerlink" href="#module-pymatting.foreground" title="Permalink to this headline"></a></h2>
 </section>
 </section>
 
@@ -145,7 +237,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2020, Thomas Germer, Tobias Uelwer, Stefan Conrad, Stefan Harmeling.</p>
+    <p>&#169; Copyright 2022, Thomas Germer, Tobias Uelwer, Stefan Conrad, Stefan Harmeling.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

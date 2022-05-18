@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>pymatting.solver package &mdash; PyMatting 1.1.4 documentation</title>
+  <title>pymatting.solver package &mdash; PyMatting 1.1.6 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -16,6 +16,8 @@
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+        <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -50,8 +52,8 @@
 <li class="toctree-l2"><a class="reference internal" href="pymatting.laplacian.html">pymatting.laplacian package</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pymatting.preconditioner.html">pymatting.preconditioner package</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">pymatting.solver package</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#pymatting-solver-callback-module">pymatting.solver.callback module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#pymatting-solver-cg-module">pymatting.solver.cg module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-pymatting.solver.callback">pymatting.solver.callback module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-pymatting.solver.cg">pymatting.solver.cg module</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="pymatting.util.html">pymatting.util package</a></li>
@@ -114,12 +116,63 @@
 </style>
 <section id="pymatting-solver-package">
 <h1>pymatting.solver package<a class="headerlink" href="#pymatting-solver-package" title="Permalink to this headline"></a></h1>
-<section id="pymatting-solver-callback-module">
-<h2>pymatting.solver.callback module<a class="headerlink" href="#pymatting-solver-callback-module" title="Permalink to this headline"></a></h2>
+<section id="module-pymatting.solver.callback">
+<span id="pymatting-solver-callback-module"></span><h2>pymatting.solver.callback module<a class="headerlink" href="#module-pymatting.solver.callback" title="Permalink to this headline"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="pymatting.solver.callback.CounterCallback">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pymatting.solver.callback.</span></span><span class="sig-name descname"><span class="pre">CounterCallback</span></span><a class="headerlink" href="#pymatting.solver.callback.CounterCallback" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Callback to count number of iterations of iterative solvers.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pymatting.solver.callback.ProgressCallback">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pymatting.solver.callback.</span></span><span class="sig-name descname"><span class="pre">ProgressCallback</span></span><a class="headerlink" href="#pymatting.solver.callback.ProgressCallback" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Callback to count number of iterations of iterative solvers.
+Also prints residual error.</p>
+</dd></dl>
+
 </section>
-<section id="pymatting-solver-cg-module">
-<h2>pymatting.solver.cg module<a class="headerlink" href="#pymatting-solver-cg-module" title="Permalink to this headline"></a></h2>
-</section>
+<section id="module-pymatting.solver.cg">
+<span id="pymatting-solver-cg-module"></span><h2>pymatting.solver.cg module<a class="headerlink" href="#module-pymatting.solver.cg" title="Permalink to this headline"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="pymatting.solver.cg.cg">
+<span class="sig-prename descclassname"><span class="pre">pymatting.solver.cg.</span></span><span class="sig-name descname"><span class="pre">cg</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">A</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x0</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">atol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rtol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-07</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxiter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">callback</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">M</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reorthogonalize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymatting.solver.cg.cg" title="Permalink to this definition"></a></dt>
+<dd><p>Solves a system of linear equations <span class="math notranslate nohighlight">\(Ax=b\)</span> using conjugate gradient descent <a class="bibtex reference internal" href="references.html#hestenes1952methods" id="id1">[HS52]</a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>A</strong> (<em>scipy.sparse.csr_matrix</em>) – Square matrix</p></li>
+<li><p><strong>b</strong> (<em>numpy.ndarray</em>) – Vector describing the right-hand side of the system</p></li>
+<li><p><strong>x0</strong> (<em>numpy.ndarray</em>) – Initialization, if <cite>None</cite> then <code class="code docutils literal notranslate"><span class="pre">x=np.zeros_like(b)</span></code></p></li>
+<li><p><strong>atol</strong> (<em>float</em>) – Absolute tolerance. The loop terminates if the <span class="math notranslate nohighlight">\(||r||\)</span> is smaller than <cite>atol</cite>, where <span class="math notranslate nohighlight">\(r\)</span> denotes the residual of the current iterate.</p></li>
+<li><p><strong>rtol</strong> (<em>float</em>) – Relative tolerance. The loop terminates if <span class="math notranslate nohighlight">\({||r||}/{||b||}\)</span> is smaller than <cite>rtol</cite>, where <span class="math notranslate nohighlight">\(r\)</span> denotes the residual of the current iterate.</p></li>
+<li><p><strong>callback</strong> (<em>function</em>) – Function <code class="code docutils literal notranslate"><span class="pre">callback(A,</span> <span class="pre">x,</span> <span class="pre">b,</span> <span class="pre">norm_b,</span> <span class="pre">r,</span> <span class="pre">norm_r)</span></code> called after each iteration, defaults to <cite>None</cite></p></li>
+<li><p><strong>M</strong> (<em>function</em><em> or </em><em>scipy.sparse.csr_matrix</em>) – Function that applies the preconditioner to a vector. Alternatively, <cite>M</cite> can be a matrix describing the precondioner.</p></li>
+<li><p><strong>reorthogonalize</strong> (<em>boolean</em>) – Wether to apply reorthogonalization of the residuals after each update, defaults to <cite>False</cite></p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>x</strong> – Solution of the system</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pymatting</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">3.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">],</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">M</span> <span class="o">=</span> <span class="n">jacobi</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">4.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cg</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">M</span><span class="o">=</span><span class="n">M</span><span class="p">)</span>
+<span class="go">array([1., 1.])</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<span class="target" id="module-pymatting.solver"></span></section>
 </section>
 
 
@@ -137,7 +190,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2020, Thomas Germer, Tobias Uelwer, Stefan Conrad, Stefan Harmeling.</p>
+    <p>&#169; Copyright 2022, Thomas Germer, Tobias Uelwer, Stefan Conrad, Stefan Harmeling.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

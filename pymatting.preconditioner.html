@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>pymatting.preconditioner package &mdash; PyMatting 1.1.4 documentation</title>
+  <title>pymatting.preconditioner package &mdash; PyMatting 1.1.6 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -49,9 +49,9 @@
 <li class="toctree-l2"><a class="reference internal" href="pymatting.foreground.html">pymatting.foreground package</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pymatting.laplacian.html">pymatting.laplacian package</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">pymatting.preconditioner package</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#pymatting-preconditioner-ichol-module">pymatting.preconditioner.ichol module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#pymatting-preconditioner-jacobi-module">pymatting.preconditioner.jacobi module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#pymatting-preconditioner-vcycle-module">pymatting.preconditioner.vcycle module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-pymatting.preconditioner.ichol">pymatting.preconditioner.ichol module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-pymatting.preconditioner.jacobi">pymatting.preconditioner.jacobi module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-pymatting.preconditioner.vcycle">pymatting.preconditioner.vcycle module</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="pymatting.solver.html">pymatting.solver package</a></li>
@@ -115,15 +115,151 @@
 </style>
 <section id="pymatting-preconditioner-package">
 <h1>pymatting.preconditioner package<a class="headerlink" href="#pymatting-preconditioner-package" title="Permalink to this headline"></a></h1>
-<section id="pymatting-preconditioner-ichol-module">
-<h2>pymatting.preconditioner.ichol module<a class="headerlink" href="#pymatting-preconditioner-ichol-module" title="Permalink to this headline"></a></h2>
+<section id="module-pymatting.preconditioner.ichol">
+<span id="pymatting-preconditioner-ichol-module"></span><h2>pymatting.preconditioner.ichol module<a class="headerlink" href="#module-pymatting.preconditioner.ichol" title="Permalink to this headline"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="pymatting.preconditioner.ichol.CholeskyDecomposition">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pymatting.preconditioner.ichol.</span></span><span class="sig-name descname"><span class="pre">CholeskyDecomposition</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Ltuple</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymatting.preconditioner.ichol.CholeskyDecomposition" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Cholesky Decomposition</p>
+<p>Calling this object applies the preconditioner to a vector by forward and back substitution.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>Ltuple</strong> (<em>tuple of numpy.ndarrays</em>) – Tuple of array describing values, row indices and row pointers for Cholesky factor in the compressed sparse comlumn format (csc)</p>
+</dd>
+</dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="pymatting.preconditioner.ichol.CholeskyDecomposition.L">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">L</span></span><a class="headerlink" href="#pymatting.preconditioner.ichol.CholeskyDecomposition.L" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the Cholesky factor</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><strong>L</strong> – Cholesky factor</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>scipy.sparse.csc_matrix</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pymatting.preconditioner.ichol.ichol">
+<span class="sig-prename descclassname"><span class="pre">pymatting.preconditioner.ichol.</span></span><span class="sig-name descname"><span class="pre">ichol</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">A</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">discard_threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0001</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shifts</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[0.0,</span> <span class="pre">0.0001,</span> <span class="pre">0.001,</span> <span class="pre">0.01,</span> <span class="pre">0.1,</span> <span class="pre">0.5,</span> <span class="pre">1.0,</span> <span class="pre">10.0,</span> <span class="pre">100,</span> <span class="pre">1000.0,</span> <span class="pre">10000.0,</span> <span class="pre">100000.0]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_nnz</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">250000000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">relative_discard_threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">diag_keep_discarded</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymatting.preconditioner.ichol.ichol" title="Permalink to this definition"></a></dt>
+<dd><p>Implements the thresholded incomplete Cholesky decomposition</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>A</strong> (<em>scipy.sparse.csc_matrix</em>) – Matrix for which the preconditioner should be calculated</p></li>
+<li><p><strong>discard_threshold</strong> (<em>float</em>) – Values having an absolute value smaller than this theshold will be discarded while calculating the cholesky decompositions</p></li>
+<li><p><strong>shifts</strong> (<em>array of floats</em>) – Values to try for regularizing the matrix of interest in case it is not positive definite after discarding the small values</p></li>
+<li><p><strong>max_nnz</strong> (<em>int</em>) – Maximum number of non-zero entries in the Cholesky decomposition. Defaults to 250 million, which should usually be around 4 GB.</p></li>
+<li><p><strong>relative_discard_threshold</strong> (<em>float</em>) – <p>Values with an absolute value of less than <code class="code docutils literal notranslate"><span class="pre">relative_discard_threshold</span> <span class="pre">*</span> <span class="pre">sum(abs(A[j:,</span> <span class="pre">j]))</span></code> will be discarded.
+A dense ichol implementation with relative threshold would look like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">L</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">tril</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="n">col</span> <span class="o">=</span> <span class="n">L</span><span class="p">[</span><span class="n">j</span><span class="p">:,</span> <span class="n">j</span><span class="p">]</span>
+    <span class="n">col</span> <span class="o">-=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">L</span><span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="p">:</span><span class="n">j</span><span class="p">]</span> <span class="o">*</span> <span class="n">L</span><span class="p">[</span><span class="n">j</span><span class="p">:,</span> <span class="p">:</span><span class="n">j</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">discard_mask</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">col</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span> <span class="o">&lt;</span> <span class="n">relative_discard_threshold</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="n">j</span><span class="p">:,</span> <span class="n">j</span><span class="p">]))</span>
+    <span class="n">col</span><span class="p">[</span><span class="mi">1</span><span class="p">:][</span><span class="n">discard_mask</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">col</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">**=</span> <span class="mf">0.5</span>
+    <span class="n">col</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="o">/=</span> <span class="n">col</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</p></li>
+<li><p><strong>diag_keep_discarded</strong> (<em>bool</em>) – Whether to update the diagonal with the discarded values. Usually better if <code class="code docutils literal notranslate"><span class="pre">True</span></code>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>chol</strong> – Preconditioner or solver object.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#pymatting.preconditioner.ichol.CholeskyDecomposition" title="pymatting.preconditioner.ichol.CholeskyDecomposition">CholeskyDecomposition</a></p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If inappropriate parameter values were passed</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pymatting</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">scipy.sparse</span> <span class="kn">import</span> <span class="n">csc_matrix</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">2.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">],</span> <span class="p">[</span><span class="mf">3.0</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cholesky_decomposition</span> <span class="o">=</span> <span class="n">ichol</span><span class="p">(</span><span class="n">csc_matrix</span><span class="p">(</span><span class="n">A</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cholesky_decomposition</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">]))</span>
+<span class="go">array([-1.,  1.])</span>
+</pre></div>
+</div>
+</dd></dl>
+
 </section>
-<section id="pymatting-preconditioner-jacobi-module">
-<h2>pymatting.preconditioner.jacobi module<a class="headerlink" href="#pymatting-preconditioner-jacobi-module" title="Permalink to this headline"></a></h2>
+<section id="module-pymatting.preconditioner.jacobi">
+<span id="pymatting-preconditioner-jacobi-module"></span><h2>pymatting.preconditioner.jacobi module<a class="headerlink" href="#module-pymatting.preconditioner.jacobi" title="Permalink to this headline"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="pymatting.preconditioner.jacobi.jacobi">
+<span class="sig-prename descclassname"><span class="pre">pymatting.preconditioner.jacobi.</span></span><span class="sig-name descname"><span class="pre">jacobi</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">A</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymatting.preconditioner.jacobi.jacobi" title="Permalink to this definition"></a></dt>
+<dd><p>Compute the Jacobi preconditioner function for the matrix A.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>A</strong> (<em>np.array</em>) – Input matrix to compute the Jacobi preconditioner for.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>precondition_matvec</strong> – Function which applies the Jacobi preconditioner to a vector</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>function</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pymatting</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">preconditioner</span> <span class="o">=</span> <span class="n">jacobi</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">preconditioner</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]))</span>
+<span class="go">array([0.5, 0.4])</span>
+</pre></div>
+</div>
+</dd></dl>
+
 </section>
-<section id="pymatting-preconditioner-vcycle-module">
-<h2>pymatting.preconditioner.vcycle module<a class="headerlink" href="#pymatting-preconditioner-vcycle-module" title="Permalink to this headline"></a></h2>
-</section>
+<section id="module-pymatting.preconditioner.vcycle">
+<span id="pymatting-preconditioner-vcycle-module"></span><h2>pymatting.preconditioner.vcycle module<a class="headerlink" href="#module-pymatting.preconditioner.vcycle" title="Permalink to this headline"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="pymatting.preconditioner.vcycle.vcycle">
+<span class="sig-prename descclassname"><span class="pre">pymatting.preconditioner.vcycle.</span></span><span class="sig-name descname"><span class="pre">vcycle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">A</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_pre_iter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_post_iter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">omega</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.8</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">direct_solve_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">64</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cache</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymatting.preconditioner.vcycle.vcycle" title="Permalink to this definition"></a></dt>
+<dd><p>Implements the V-Cycle preconditioner.
+The V-Cycle solver was recommended by <a class="bibtex reference internal" href="references.html#lee2014scalable" id="id1">[LW14]</a> to solve the alpha matting problem.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>A</strong> (<em>numpy.ndarray</em>) – Input matrix</p></li>
+<li><p><strong>shape</strong> (<em>tuple of ints</em>) – Describing the height and width of the image</p></li>
+<li><p><strong>num_pre_iter</strong> (<em>int</em>) – Number of Jacobi iterations before each V-Cycle, defaults to 1</p></li>
+<li><p><strong>num_post_iter</strong> (<em>int</em>) – Number of Jacobi iterations after each V-Cycle, defaults to 1</p></li>
+<li><p><strong>omega</strong> (<em>float</em>) – Weight parameter for the Jacobi method. If method fails to converge, try different values.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>precondition</strong> – Function which applies the V-Cycle preconditioner to a vector</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>function</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pymatting</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">scipy.sparse</span> <span class="kn">import</span> <span class="n">csc_matrix</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">preconditioner</span> <span class="o">=</span> <span class="n">vcycle</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">preconditioner</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]))</span>
+<span class="go">array([-1.,  1.])</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<span class="target" id="module-pymatting.preconditioner"></span></section>
 </section>
 
 
@@ -141,7 +277,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2020, Thomas Germer, Tobias Uelwer, Stefan Conrad, Stefan Harmeling.</p>
+    <p>&#169; Copyright 2022, Thomas Germer, Tobias Uelwer, Stefan Conrad, Stefan Harmeling.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

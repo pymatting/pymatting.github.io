@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>pymatting.cutout package &mdash; PyMatting 1.1.4 documentation</title>
+  <title>pymatting.cutout package &mdash; PyMatting 1.1.6 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -46,7 +46,7 @@
 <li class="toctree-l2"><a class="reference internal" href="pymatting.alpha.html">pymatting.alpha package</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pymatting.config.html">pymatting.config package</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">pymatting.cutout package</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#pymatting-cutout-cutout-module">pymatting.cutout.cutout module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-pymatting.cutout.cutout">pymatting.cutout.cutout module</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="pymatting.foreground.html">pymatting.foreground package</a></li>
@@ -113,9 +113,29 @@
 </style>
 <section id="pymatting-cutout-package">
 <h1>pymatting.cutout package<a class="headerlink" href="#pymatting-cutout-package" title="Permalink to this headline"></a></h1>
-<section id="pymatting-cutout-cutout-module">
-<h2>pymatting.cutout.cutout module<a class="headerlink" href="#pymatting-cutout-cutout-module" title="Permalink to this headline"></a></h2>
-</section>
+<section id="module-pymatting.cutout.cutout">
+<span id="pymatting-cutout-cutout-module"></span><h2>pymatting.cutout.cutout module<a class="headerlink" href="#module-pymatting.cutout.cutout" title="Permalink to this headline"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="pymatting.cutout.cutout.cutout">
+<span class="sig-prename descclassname"><span class="pre">pymatting.cutout.cutout.</span></span><span class="sig-name descname"><span class="pre">cutout</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">image_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">trimap_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cutout_path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pymatting.cutout.cutout.cutout" title="Permalink to this definition"></a></dt>
+<dd><p>Generate a cutout image from an input image and an input trimap.
+This method is using closed-form alpha matting as proposed by <a class="bibtex reference internal" href="references.html#levin2007closed" id="id1">[LLW07]</a> and multi-level foreground extraction <a class="bibtex reference internal" href="references.html#germer2020multilevel" id="id2">[GUCH20]</a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>image_path</strong> (<em>str</em>) – Path of input image</p></li>
+<li><p><strong>trimap_path</strong> (<em>str</em>) – Path of input trimap</p></li>
+<li><p><strong>cutout_path</strong> (<em>str</em>) – Path of output cutout image</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">cutout</span><span class="p">(</span><span class="s2">&quot;../data/lemur.png&quot;</span><span class="p">,</span> <span class="s2">&quot;../data/lemur_trimap.png&quot;</span><span class="p">,</span> <span class="s2">&quot;lemur_cutout.png&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<span class="target" id="module-pymatting.cutout"></span></section>
 </section>
 
 
@@ -133,7 +153,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2020, Thomas Germer, Tobias Uelwer, Stefan Conrad, Stefan Harmeling.</p>
+    <p>&#169; Copyright 2022, Thomas Germer, Tobias Uelwer, Stefan Conrad, Stefan Harmeling.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
