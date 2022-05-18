@@ -1,8 +1,0 @@
-pymatting.config package
-========================
-
-
-.. automodule:: pymatting.config
-   :members:
-   :no-undoc-members:
-   :show-inheritance:
