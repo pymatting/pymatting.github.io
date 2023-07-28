@@ -1,0 +1,64 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8" /><title>Benchmarks — PyMatting 1.1.10 documentation</title><link rel="stylesheet" href="/katex.min.css"><link rel="stylesheet" href="/style.css"><script src="/katex.min.js"></script></head><body><div class="sidebar"><div class="logo"><a href="/" class="sidebarlink"><img src="/figures/lemur_small.png" width="50px"></a><a href="/" class="logotext">PyMatting</a></div><div class="sidebarcontents">CONTENTS</div><ul><li><a href="/index.html" class="sidebarlink">PyMatting</a></li><li class="sidebarlink"><a href="/api.html" class="sidebarlink">API Reference</a><br><ul><li><a href="/alpha.html" class="sidebarlink">Alpha Estimation</a></li><li><a href="/cutout.html" class="sidebarlink">Cutout Function</a></li><li><a href="/foreground.html" class="sidebarlink">Foreground Estimation</a></li><li><a href="/laplacian.html" class="sidebarlink">Matting Laplacians</a></li><li><a href="/preconditioner.html" class="sidebarlink">Preconditioners</a></li><li><a href="/solver.html" class="sidebarlink">Solvers</a></li><li><a href="/util.html" class="sidebarlink">Utility Functions</a></li></ul></li><li><a href="/examples.html" class="sidebarlink">Examples</a></li><li><a href="/benchmarks.html" class="sidebarlink currentpage">Benchmarks</a></li><li><a href="/references.html" class="sidebarlink">Biblography</a></li><li><a href="https://pypi.org/project/PyMatting/" class="sidebarlink">PyPI</a></li><li><a href="https://www.github.com/pymatting/pymatting" class="sidebarlink">GitHub</a></li></ul></div><div class="middle"><h1>Benchmarks</h1><h2><span class="text">Quality</span></h2><div class="textblock"><span class="text">To evaluate the performance of our implementation we calculate the mean squared error on the unknown pixels of the benchmark images of </span><span class="citation"><a href="/references.html#RRWGKR09">[RRWGKR09]</a></span><span class="text">.</span></div>    <div class="figure">
+        <img src="/figures/laplacian_quality_many_bars.png">
+        <div class="caption">Figure 1: Mean squared error of the estimated alpha matte to the ground truth alpha matte.</div>
+    </div>
+    <div class="figure">
+        <img src="/figures/laplacians.png">
+        <div class="caption">Figure 2: Mean squared error across all images from the benchmark dataset.</div>
+    </div>
+<h2><span class="text">Visualization</span></h2><div class="textblock"><span class="text">The following videos show the iterates of the different methods.
+Note that the videos of the slower methods have been accelerated.</span></div>    <table style="width:100%;display:inline-block;">
+        <tr align="center">
+        <td>
+            <embed>
+                <video width="320" height="180" loop autoplay muted playsinline>
+                    <source src="https://github.com/pymatting/videos/blob/master/cf_web.mp4?raw=true" type="video/mp4">
+                </video>
+            </embed>
+        </td>
+        <td>
+            <embed>
+                <video width="320" height="180" loop autoplay muted playsinline>
+                    <source src="https://github.com/pymatting/videos/blob/master/knn_web.mp4?raw=true" type="video/mp4">
+                </video>
+            </embed>
+        </td>
+    </tr>
+    <tr align="center">
+        <td>CF</td>
+        <td>KNN</td>
+    </tr>
+    <tr align="center">
+        <td>
+            <embed>
+                <video width="320" height="180" loop autoplay muted playsinline>
+                    <source src="https://github.com/pymatting/videos/blob/master/lkm_web.mp4?raw=true" type="video/mp4">
+                </video>
+            </embed>
+        </td>
+        <td>
+            <embed>
+                <video width="320" height="180" loop autoplay muted playsinline>
+                    <source src="https://github.com/pymatting/videos/blob/master/rw_web.mp4?raw=true" type="video/mp4">
+                </video>
+            </embed>
+        </td>
+        </tr>
+        <tr align="center">
+            <td>LKM</td>
+            <td>RW</td>
+        </tr>
+    </table>
+<h2><span class="text">Performance</span></h2><div class="textblock"><span class="text">We compare the computational runtime of our solver with other solvers: pyAMG, UMFPAC, AMGCL, MUMPS, Eigen and SuperLU. Figure 3 shows that our implemented conjugate gradients method in combination with the incomplete Cholesky decomposition preconditioner outperforms the other methods by a large margin. For the iterative solver we used an absolute tolerance of </span><span class="inline_math">\(10^{-7}\)</span><span class="text">, which we scaled with the number of known pixels, i.e. pixels that are either marked as foreground or background in the trimap.</span></div>    <div class="figure">
+        <img src="/figures/time_image_size.png">
+        <div class="caption">Figure 3: Comparison of runtime for different image sizes.</div>
+    </div>
+    <div class="figure">
+        <img src="/figures/average_running_time.png">
+        <div class="caption">Figure 4: Mean running time of each solver in seconds.</div>
+    </div>
+    <div class="figure">
+        <img src="/figures/average_peak_memory_usage.png">
+        <div class="caption">Figure 5: Peak memory for each solver usage in MB.</div>
+    </div>
+<footer>© Copyright 2023, Thomas Germer, Tobias Uelwer, Stefan Conrad, Stefan Harmeling</footer></div><script src="/auto-render.min.js" onload="renderMathInElement(document.body)"></script></body></html>
